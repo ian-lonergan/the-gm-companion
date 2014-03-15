@@ -1,6 +1,6 @@
 jowan_char:
   id: 1
-  class: Dread Necromancer
+  character_class: Dread Necromancer
   race: Undead
   level: 9
   gender: Man
@@ -8,7 +8,7 @@ jowan_char:
   campaign_object_id: 1
 anya_char:
   id: 2
-  class: Inquisitor
+  character_class: Inquisitor
   race: Human
   level: 7
   gender: Woman

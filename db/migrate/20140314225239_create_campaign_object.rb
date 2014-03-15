@@ -4,6 +4,7 @@ class CreateCampaignObject < ActiveRecord::Migration
       t.string :name
       t.string :abstract
       t.text   :notes
+      t.references :campaign_object_holder, polymorphic: true
       t.timestamps
     end
   end

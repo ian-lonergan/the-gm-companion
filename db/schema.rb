@@ -17,12 +17,14 @@ ActiveRecord::Schema.define(version: 20140314225528) do
     t.string   "name"
     t.string   "abstract"
     t.text     "notes"
+    t.integer  "campaign_object_holder_id"
+    t.string   "campaign_object_holder_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "characters", force: true do |t|
-    t.string   "class"
+    t.string   "character_class"
     t.string   "race"
     t.integer  "level"
     t.string   "gender"
