@@ -1,0 +1,15 @@
+jowan_char:
+  id: 1
+  race: Undead
+  level: 9
+  gender: Man
+  description: Once a sickly man, he has now become one of the undead in his hunt for the secrets and truth.
+  campaign_object_id: 1
+anya_char:
+  id: 2
+  class: Inquisitor
+  race: Human
+  level: 7
+  gender: Woman
+  description: Face is horribly disfigured from an acid attack.
+  campaign_object_id: 2
