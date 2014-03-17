@@ -10,11 +10,12 @@ class CampaignObjectsController < ApplicationController
   end
   
   def create
-    @campaign_object = CampaignObject.create(name: params[:name], abstract: params[:abstract], notes: params[:notes])
+    @campaign_object = CampaignObject.create(params[:campaign_object])
   end
   
   def destroy
-    
+    @deleted = CampaignObject.find(params[:id]).destroy
+    @campaign_object = CampaignObject.first
   end
   
 end
