@@ -27,7 +27,8 @@ class CharactersController < ApplicationController
   
   def update
     @character = Character.find(params[:id])
-    if @character.update_attributes(character_params)
+    @campaign_object = @character.campaign_object
+    if @character.update_attributes(character_params) and @campaign_object.update_attributes(campaign_object_params)
       redirect_to :action => :show, :id => @character
     else
       redirect_to :action => :index
