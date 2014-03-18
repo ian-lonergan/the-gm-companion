@@ -1,0 +1,27 @@
+= form_for @character do |f|
+  = fields_for :campaign_object, @character.campaign_object do |c| 
+    = c.label :name
+    = c.text_field :name
+    br
+    = c.label :abstract
+    = c.text_field :abstract
+    br
+    = c.label :notes
+    = c.text_area :notes
+  br
+  = f.label :character_class
+  = f.text_field :character_class
+  br
+  = f.label :race
+  = f.text_field :race
+  br
+  = f.label :level
+  = f.text_field :level
+  br
+  = f.label :gender
+  = f.text_field :gender
+  br
+  = f.label :description
+  = f.text_area :description
+  br
+  = f.submit

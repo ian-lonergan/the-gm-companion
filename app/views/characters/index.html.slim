@@ -1,0 +1,6 @@
+ul
+  - @characters.each_with_index do |character, index|
+    li
+      = render character
+  li
+    = link_to 'New Character', [:new, :character]

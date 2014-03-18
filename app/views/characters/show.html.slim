@@ -1,0 +1,18 @@
+= @character.name
+br
+= @character.abstract
+br
+= @character.notes
+br
+= @character.character_class
+br
+= @character.race
+br
+= @character.level
+br
+= @character.gender
+br
+= @character.description
+br
+= button_to 'Delete', @character, method: :delete, data: { confirm: 'Are you sure?'}
+= button_to 'Back to Index', characters_path, method: :get

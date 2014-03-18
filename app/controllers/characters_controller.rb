@@ -1,15 +1,18 @@
 class CharactersController < ApplicationController
-  
+  include CampaignObjectHolderController
+
   def index
     @characters = Character.all
   end
   
   def new
+    @campaign_object = CampaignObject.new
     @character = Character.new
   end
   
   def create
-    @character = Character.create(params[:character])
+    @character = Character.create(character_params)
+    @character.campaign_object = CampaignObject.create(campaign_object_params)
     @character.save
     redirect_to :action => :show, :id => @character
   end
@@ -19,7 +22,7 @@ class CharactersController < ApplicationController
   end
   
   def edit
-    @character = Character.find(params[:id])
+    @character = Character.includes(:campaign_object).find(params[:id])
   end
   
   def update
@@ -33,7 +36,7 @@ class CharactersController < ApplicationController
   
   def destroy
     @deleted = Character.find(params[:id]).destroy
-    @character = Character.includes(:campaign_object).first
+    redirect_to :action => :index
   end
   
   def character_params
