@@ -2,7 +2,7 @@ module CampaignObjectHolder
   extend ActiveSupport::Concern
   
   included do
-    has_one :campaign_object, as: :campaign_object_holder
+    has_one :campaign_object, as: :campaign_object_holder, dependent: :destroy
     
     def name
       campaign_object.name
