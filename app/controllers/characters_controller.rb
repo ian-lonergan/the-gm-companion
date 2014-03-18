@@ -2,7 +2,6 @@ class CharactersController < ApplicationController
   
   def index
     @characters = Character.all
-    @character = Character.includes(:campaign_object).first
   end
   
   def new
@@ -12,6 +11,7 @@ class CharactersController < ApplicationController
   def create
     @character = Character.create(params[:character])
     @character.save
+    redirect_to :action => :show, :id => @character
   end
   
   def show
