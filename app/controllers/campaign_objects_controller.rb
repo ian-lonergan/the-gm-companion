@@ -33,7 +33,7 @@ class CampaignObjectsController < ApplicationController
   
   def destroy
     @deleted = CampaignObject.find(params[:id]).destroy
-    @campaign_object = CampaignObject.first
+    redirect_to :action => :index
   end
   
   def campaign_object_params
