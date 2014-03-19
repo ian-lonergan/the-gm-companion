@@ -32,6 +32,17 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development, :test do
+  gem 'debugger'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'autotest'
+  gem 'autotest-standalone'
+end
+
+# Use slim as templating engine
+gem 'slim-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
@@ -40,10 +51,3 @@ end
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
-
-# Use slim as templating engine
-gem 'slim-rails'
