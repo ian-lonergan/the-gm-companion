@@ -4,24 +4,12 @@ class CampaignObjectsController < ApplicationController
     @campaign_objects = CampaignObject.all
   end
   
-  def new
-    @campaign_object = CampaignObject.new
-  end
-  
   def create
     @campaign_object = CampaignObject.create(campaign_object_params)
     @campaign_object.save
     redirect_to :action => :show, :id => @campaign_object
   end
-  
-  def show
-    @campaign_object = CampaignObject.find(params[:id])
-  end
-  
-  def edit
-    @campaign_object = CampaignObject.find(params[:id])
-  end
-  
+    
   def update
     @campaign_object = CampaignObject.find(params[:id])
     if @campaign_object.update_attributes(campaign_object_params)
