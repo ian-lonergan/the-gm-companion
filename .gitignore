@@ -17,4 +17,7 @@
 
 # Ignore project related files.
 .project
-.settings/*
+.settings/
+
+# ignore uploads
+/public/system/
