@@ -9,7 +9,7 @@
     = c.label :notes
     = c.text_area :notes
   br
-  = image_tag @location.map
+  = image_tag @location.map(:medium)
   = f.label :map
   = f.file_field :map
   br
