@@ -1,0 +1,6 @@
+ul
+  - @locations.each_with_index do |location, index|
+    li
+      = render location
+  li
+    = link_to 'New Location', [:new, :location]

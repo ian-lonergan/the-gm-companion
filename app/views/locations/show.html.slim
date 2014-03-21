@@ -1,0 +1,12 @@
+= @location.name
+br
+= @location.abstract
+br
+= @location.notes
+br
+= image_tag @location.map
+br
+= @location.map_key
+br
+= button_to 'Delete', @location, method: :delete, data: { confirm: 'Are you sure?'}
+= button_to 'Back to Index', locations_path, method: :get

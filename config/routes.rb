@@ -3,4 +3,5 @@ TheGmCompanion::Application.routes.draw do
 
   resources :campaign_objects, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   resources :characters, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :locations, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 end

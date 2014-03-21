@@ -43,6 +43,9 @@ end
 # Use slim as templating engine
 gem 'slim-rails'
 
+# Use Paperclip for file uploads
+gem 'paperclip', '~> 4.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
