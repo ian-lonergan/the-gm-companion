@@ -1,5 +1,5 @@
 = form_for @location do |f|
-  = fields_for :campaign_object, @campaign_object do |c| 
+  = fields_for :campaign_object, @location.campaign_object do |c| 
     = c.label :name
     = c.text_field :name
     br
@@ -9,6 +9,7 @@
     = c.label :notes
     = c.text_area :notes
   br
+  = image_tag @location.map
   = f.label :map
   = f.file_field :map
   br
