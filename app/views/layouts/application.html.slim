@@ -7,4 +7,9 @@ html
     = csrf_meta_tags
   
   body
-    = yield
+    #topBar
+      #logo
+        = link_to image_tag("logo.png"), root_url
+    #leftColumn
+    #mainBody
+      = yield
