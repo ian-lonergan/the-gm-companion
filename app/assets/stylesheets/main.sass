@@ -16,27 +16,38 @@ body
   padding: 0
   margin: 0
   font: "DejaVu Serif", serif
+  font-size: 12pt
   
 #loginHeader
   top: 0
   height: 129px
   width: 100%
   background: $green-dark
-  
-#topHeader
+
+header
   top: 0
   height: 35px
   width: 100%
   background: $green-dark
   position: fixed
+  
+#headerWrapper
+  overflow: hidden
+  height: 35px
+  position: fixed
+  
+#logoSmall
+  width: 190px
+  height: auto
+  float: left
 
 #leftColumn
   width: 190px
   height: 100%
-  margin-top: 35px
   float: left
   background-color: $yellow-medium
   position: fixed
+  margin-top: 35px
   
 #content
   padding-top: 35px + 10px
@@ -58,3 +69,20 @@ textarea
   min-width: $inputMinWidth
   height: 100px
   font-family: inherit
+
+nav
+  float: left
+  margin-top: 10px
+
+nav ul
+  float: left
+  padding-left: 20px
+
+nav li
+  float: left
+  margin-right: 10px
+  
+nav li a
+  text-decoration: none
+  color: $yellow-light
+  font-size: 115%

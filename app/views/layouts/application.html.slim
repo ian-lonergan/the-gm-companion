@@ -7,9 +7,17 @@ html
     = csrf_meta_tags
   
   body
-    header(id="topHeader")
-      #logo
-        = link_to image_tag("logo-small.png"), root_url
+    header
+      #headerWrapper
+        #logoSmall
+          = link_to image_tag("logo-small.png"), root_url
+        nav
+          ul
+            li
+              = link_to 'Characters', :characters
+            li
+              = link_to 'Locations', :locations
+
     #leftColumn
     #content
       = yield
