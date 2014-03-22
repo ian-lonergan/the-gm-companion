@@ -2,18 +2,13 @@
   = fields_for :campaign_object, @location.campaign_object do |c| 
     = c.label :name
     = c.text_field :name
-    br
     = c.label :abstract
     = c.text_field :abstract
-    br
     = c.label :notes
     = c.text_area :notes
-  br
   = image_tag @location.map(:medium)
   = f.label :map
   = f.file_field :map
-  br
   = f.label :map_key
   = f.text_area :map_key
-  br
   = f.submit

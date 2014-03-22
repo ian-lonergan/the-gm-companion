@@ -1,30 +1,60 @@
-$leftColumnWidth: 150px
+$inputMinWidth: 350px
 
 html
   height: 100%
   width: 100%
 
-li
+ul
   list-style: none
+  padding: 0
+  margin: 0
   
 body
   color: $black
   height: 100%
   width: 100%
+  padding: 0
+  margin: 0
+  font: "DejaVu Serif", serif
   
-#topBar
+#loginHeader
+  top: 0
   height: 129px
   width: 100%
-  background-color: $green-dark
+  background: $green-dark
+  
+#topHeader
+  top: 0
+  height: 35px
+  width: 100%
+  background: $green-dark
+  position: fixed
 
 #leftColumn
-  width: 150px
+  width: 190px
   height: 100%
+  margin-top: 35px
   float: left
   background-color: $yellow-medium
+  position: fixed
   
-#logo
-
-#mainBody
-  margin-left: $leftColumnWidth + 10px
-  padding-top: 10px
+#content
+  padding-top: 35px + 10px
+  margin-left: 190px + 10px
+  
+input
+  display: block
+  width: 80%
+  min-width: $inputMinWidth
+  font-family: inherit
+  margin-bottom: 5px
+ 
+input[type='submit']
+  min-width: 0px
+  
+textarea
+  display: block
+  width: 80%
+  min-width: $inputMinWidth
+  height: 100px
+  font-family: inherit
