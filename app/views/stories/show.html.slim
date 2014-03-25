@@ -1,0 +1,10 @@
+= @story.name
+br
+= @story.abstract
+br
+= @story.notes
+br
+= @story.story_text
+br
+= button_to 'Delete', @story, method: :delete, data: { confirm: 'Are you sure?'}
+= button_to 'Back to Index', stories_path, method: :get

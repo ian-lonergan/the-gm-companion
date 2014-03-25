@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320221443) do
+ActiveRecord::Schema.define(version: 20140324235854) do
 
   create_table "campaign_objects", force: true do |t|
     t.string   "name"
@@ -24,15 +24,13 @@ ActiveRecord::Schema.define(version: 20140320221443) do
   end
 
   create_table "characters", force: true do |t|
-    t.string   "character_class"
-    t.string   "race"
-    t.integer  "level"
-    t.string   "gender"
-    t.text     "description"
-    t.integer  "campaign_object_id"
-    t.string   "campaign_object_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "character_class"
+    t.string  "race"
+    t.integer "level"
+    t.string  "gender"
+    t.text    "description"
+    t.integer "campaign_object_id"
+    t.string  "campaign_object_type"
   end
 
   create_table "locations", force: true do |t|
@@ -43,8 +41,12 @@ ActiveRecord::Schema.define(version: 20140320221443) do
     t.text     "map_key"
     t.integer  "campaign_object_id"
     t.string   "campaign_object_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  end
+
+  create_table "stories", force: true do |t|
+    t.text    "story_text"
+    t.integer "campaign_object_id"
+    t.string  "campaign_object_type"
   end
 
 end
