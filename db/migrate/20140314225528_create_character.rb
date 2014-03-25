@@ -7,7 +7,6 @@ class CreateCharacter < ActiveRecord::Migration
       t.string  :gender
       t.text    :description
       t.references :campaign_object, polymorphic: true
-      t.timestamps
     end
   end
 end

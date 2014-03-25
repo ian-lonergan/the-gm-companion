@@ -4,7 +4,6 @@ class CreateLocation < ActiveRecord::Migration
       t.attachment :map
       t.text :map_key
       t.references :campaign_object, polymorphic: true
-      t.timestamps
     end
   end
 end
