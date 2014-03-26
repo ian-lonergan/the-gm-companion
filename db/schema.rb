@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324235854) do
+ActiveRecord::Schema.define(version: 20140325231458) do
 
   create_table "campaign_objects", force: true do |t|
     t.string   "name"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20140324235854) do
     t.text     "notes"
     t.integer  "campaign_object_holder_id"
     t.string   "campaign_object_holder_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "campaign_id"
+  end
+
+  create_table "campaigns", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "outline"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,8 +38,6 @@ ActiveRecord::Schema.define(version: 20140324235854) do
     t.integer "level"
     t.string  "gender"
     t.text    "description"
-    t.integer "campaign_object_id"
-    t.string  "campaign_object_type"
   end
 
   create_table "locations", force: true do |t|
@@ -39,14 +46,10 @@ ActiveRecord::Schema.define(version: 20140324235854) do
     t.integer  "map_file_size"
     t.datetime "map_updated_at"
     t.text     "map_key"
-    t.integer  "campaign_object_id"
-    t.string   "campaign_object_type"
   end
 
   create_table "stories", force: true do |t|
-    t.text    "story_text"
-    t.integer "campaign_object_id"
-    t.string  "campaign_object_type"
+    t.text "story_text"
   end
 
 end

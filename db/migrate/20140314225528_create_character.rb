@@ -6,7 +6,6 @@ class CreateCharacter < ActiveRecord::Migration
       t.integer :level
       t.string  :gender
       t.text    :description
-      t.references :campaign_object, polymorphic: true
     end
   end
 end
