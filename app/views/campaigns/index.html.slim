@@ -1,0 +1,6 @@
+ul
+  - @campaigns.each_with_index do |campaign, index|
+    li
+      = render campaign
+  li
+    = link_to 'New Campaign', [:new, :campaign]

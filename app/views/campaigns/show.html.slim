@@ -1,0 +1,8 @@
+= @campaign.name
+br
+= @campaign.description
+br
+= @campaign.outline
+br
+= button_to 'Delete', @campaign, method: :delete, data: { confirm: 'Are you sure?'}
+= button_to 'Back to Index', campaigns_path, method: :get
