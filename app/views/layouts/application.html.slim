@@ -8,18 +8,29 @@ html
   
   body
     header
-      #headerWrapper
-        #logoSmall
-          = link_to image_tag("logo-small.png"), root_url
-        nav
-          ul
-            li
-              = link_to 'Stories', :stories
-            li
-              = link_to 'Characters', :characters
-            li
-              = link_to 'Locations', :locations
-
-    #leftColumn
-    #content
-      = yield
+      - if current_campaign?
+        #campaignChosenHeader
+          #logoSmall
+            = link_to image_tag("logo-small.png"), root_url
+          nav
+            ul
+              li
+                = link_to 'Stories', [current_campaign, :stories]
+              li
+                = link_to 'Characters', [current_campaign, :characters]
+              li
+                = link_to 'Locations', [current_campaign, :locations]
+      - else
+        #noCampaignChosenHeader
+          #logoLarge
+            = link_to image_tag("logo-large.png"), root_url
+    
+    - if current_campaign?
+      #leftColumn
+      #campaignChosenContent
+        = yield
+    - else
+      #noCampaignChosenContent
+        = yield
+    
+      
