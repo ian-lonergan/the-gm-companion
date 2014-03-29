@@ -37,6 +37,8 @@ group :development, :test do
   gem 'autotest-standalone'
 end
 
+gem 'rails_12factor', group: :production
+
 # Templating
 gem 'slim-rails'
 gem 'sass-rails', '~> 4.0.0'
