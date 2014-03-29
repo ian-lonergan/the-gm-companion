@@ -6,7 +6,6 @@ class CampaignObjectsController < ApplicationController
   
   def create
     @campaign_object = CampaignObject.create(campaign_object_params)
-    @campaign_object.campaign_id = params[:campaign_id]
     @campaign_object.save
     redirect_to :action => :show, :id => @campaign_object
   end

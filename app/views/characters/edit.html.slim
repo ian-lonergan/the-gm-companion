@@ -1,4 +1,4 @@
-= form_for @character do |f|
+= form_for [@campaign, @character] do |f|
   = fields_for :campaign_object, @character.campaign_object do |c| 
     = c.label :name
     = c.text_field :name

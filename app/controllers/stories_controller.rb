@@ -10,6 +10,7 @@ class StoriesController < ApplicationController
   end
   
   def new
+    @campaign = Campaign.find(params[:campaign_id])
     @campaign_object = CampaignObject.new
     @story = Story.new
   end
@@ -17,6 +18,7 @@ class StoriesController < ApplicationController
   def create
     @story = Story.create(story_params)
     @story.campaign_object = CampaignObject.create(campaign_object_params)
+    @story.campaign_object.campaign_id = params[:campaign_id]
     @story.save
     redirect_to :action => :show, :id => @story
   end
