@@ -2,7 +2,11 @@ class LocationsController < ApplicationController
   include CampaignObjectHolderController
 
   def index
-    @locations = Location.all
+    if params[:campaign_id]
+      @locations = Campaign.find(params[:campaign_id]).locations
+    else
+      @locations = Location.all
+    end
   end
   
   def new

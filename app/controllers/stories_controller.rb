@@ -2,7 +2,11 @@ class StoriesController < ApplicationController
   include CampaignObjectHolderController
 
   def index
-    @stories = Story.all
+    if params[:campaign_id]
+      @stories = Campaign.find(params[:campaign_id]).stories
+    else
+      @stories = Story.all
+    end
   end
   
   def new

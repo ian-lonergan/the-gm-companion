@@ -2,7 +2,11 @@ class CharactersController < ApplicationController
   include CampaignObjectHolderController
 
   def index
-    @characters = Character.all
+    if params[:campaign_id]
+      @characters = Campaign.find(params[:campaign_id]).characters
+    else
+      @characters = Character.all
+    end
   end
   
   def new
