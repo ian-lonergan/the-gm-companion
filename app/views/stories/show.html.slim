@@ -1,10 +1,12 @@
-= @story.name
-br
-= @story.abstract
-br
-= @story.notes
-br
-= @story.story_text
-br
-= button_to 'Delete', @story, method: :delete, data: { confirm: 'Are you sure?'}
+h1[class="page-name"]
+  = @story.name
+p[class="abstract"]
+  = @story.abstract
+h2 Story
+p
+  = @story.story_text
+h2 Notes
+p
+  = @story.notes
+= button_to 'Edit', [:edit, @story], method: :get
 = button_to 'Back to Index', stories_path, method: :get

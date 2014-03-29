@@ -17,3 +17,4 @@
   = f.label :description
   = f.text_area :description
   = f.submit
+= button_to 'Delete', @character, method: :delete, data: { confirm: 'Are you sure?'}

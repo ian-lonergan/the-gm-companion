@@ -12,3 +12,4 @@
   = f.label :map_key
   = f.text_area :map_key
   = f.submit
+= button_to 'Delete', @location, method: :delete, data: { confirm: 'Are you sure?'}

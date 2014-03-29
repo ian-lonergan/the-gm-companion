@@ -1,18 +1,35 @@
-= @character.name
+h1[class="page-name"]
+  = @character.name
+p[class="abstract"]
+  = @character.abstract
+table[class="info-box"]
+  tbody
+    tr
+      td Name:
+      td
+        = @character.name
+    tr
+      td Race:
+      td
+        = @character.race
+    tr
+      td Gender:
+      td
+        = @character.gender
+    tr
+      td Class:
+      td
+        = @character.character_class
+    tr
+      td Level:
+      td
+        = @character.level
+h2 Description
+p
+  = @character.description
+h2 Notes
+p
+  = @character.notes
 br
-= @character.abstract
-br
-= @character.notes
-br
-= @character.character_class
-br
-= @character.race
-br
-= @character.level
-br
-= @character.gender
-br
-= @character.description
-br
-= button_to 'Delete', @character, method: :delete, data: { confirm: 'Are you sure?'}
+= button_to 'Edit', [:edit, @character], method: :get
 = button_to 'Back to Index', characters_path, method: :get

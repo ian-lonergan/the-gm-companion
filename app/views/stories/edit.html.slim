@@ -9,3 +9,4 @@
   = f.label :story_text
   = f.text_area :story_text
   = f.submit
+= button_to 'Delete', @story, method: :delete, data: { confirm: 'Are you sure?'}

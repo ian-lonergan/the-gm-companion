@@ -1,12 +1,13 @@
-= @location.name
-br
-= @location.abstract
-br
-= @location.notes
-br
+h1[class="page-name"]
+  = @location.name
+p[class="abstract"]
+  = @location.abstract
+h2 Map
 = image_tag @location.map
-br
-= @location.map_key
-br
-= button_to 'Delete', @location, method: :delete, data: { confirm: 'Are you sure?'}
+p
+  = @location.map_key
+h2 Notes
+p
+  = @location.notes
+= button_to 'Edit', [:edit, @location], method: :get
 = button_to 'Back to Index', locations_path, method: :get
