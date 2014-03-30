@@ -7,7 +7,6 @@ h2 Map
 p
   = @location.map_key
 h2 Notes
-p
-  = @location.notes
+= render partial: "notes/index", locals: {notes: @location.notes, campaign_object: @location.campaign_object}
 = button_to 'Edit', [:edit, @location], method: :get
 = button_to 'Back to Index', locations_path, method: :get

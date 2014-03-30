@@ -28,8 +28,7 @@ h2 Description
 p
   = @character.description
 h2 Notes
-p
-  = @character.notes
+= render partial: "notes/index", locals: {notes: @character.notes, campaign_object: @character.campaign_object}
 br
 = button_to 'Edit', [:edit, @character], method: :get
 = button_to 'Back to Index', characters_path, method: :get

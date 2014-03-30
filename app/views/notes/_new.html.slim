@@ -1,0 +1,21 @@
+tr
+  = form_for :note, url: [campaign_object, :notes], method: :post do |f|
+    = f.hidden_field campaign_object_id: campaign_object.id
+    td
+      = f.text_field :text
+    td 
+      = f.submit
+/
+  tr
+  = form_tag campaign_object_note_path(campaign_object, :new), method: :post do
+    td
+      = text_field_tag :text
+    td 
+      = submit_tag
+
+  tr
+  = form_tag [campaign_object, :notes], method: :post do
+    td
+      = text_field_tag :text
+    td 
+      = submit_tag

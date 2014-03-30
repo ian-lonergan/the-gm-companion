@@ -25,6 +25,7 @@ class CharactersController < ApplicationController
   
   def show
     @character = Character.includes(:campaign_object).find(params[:id])
+    @campaign_object = @character.campaign_object
   end
   
   def edit

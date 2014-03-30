@@ -10,9 +10,6 @@ describe CampaignObject do
   it "is invalid without an abstract" do
     FactoryGirl.build(:campaign_object, abstract: nil).should_not be_valid
   end
-  it "is valid without notes" do
-    FactoryGirl.build(:campaign_object, notes: nil).should be_valid
-  end
   it "is valid without a campaign" do
     FactoryGirl.build(:campaign_object, campaign: nil).should be_valid
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325231458) do
+ActiveRecord::Schema.define(version: 20140330195212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20140325231458) do
   create_table "campaign_objects", force: true do |t|
     t.string   "name"
     t.string   "abstract"
-    t.text     "notes"
     t.integer  "campaign_object_holder_id"
     t.string   "campaign_object_holder_type"
     t.datetime "created_at"
@@ -49,6 +48,13 @@ ActiveRecord::Schema.define(version: 20140325231458) do
     t.integer  "map_file_size"
     t.datetime "map_updated_at"
     t.text     "map_key"
+  end
+
+  create_table "notes", force: true do |t|
+    t.string   "text"
+    t.integer  "campaign_object_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "stories", force: true do |t|

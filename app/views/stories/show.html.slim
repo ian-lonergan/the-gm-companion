@@ -6,7 +6,6 @@ h2 Story
 p
   = @story.story_text
 h2 Notes
-p
-  = @story.notes
+= render partial: "notes/index", locals: {notes: @story.notes, campaign_object: @story.campaign_object}
 = button_to 'Edit', [:edit, @story], method: :get
 = button_to 'Back to Index', stories_path, method: :get
