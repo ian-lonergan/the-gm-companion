@@ -1,8 +1,8 @@
-tr
-  = form_for :note, url: [campaign_object, :notes], method: :post do |f|
+tr[class="notes-new"]
+  = form_for :note, url: [campaign_object, :notes], remote: true, method: :post do |f|
     = f.hidden_field campaign_object_id: campaign_object.id
     td
-      = f.text_field :text
+      = f.text_field :text, placeholder: 'New note'
     td
     td 
       = f.submit
