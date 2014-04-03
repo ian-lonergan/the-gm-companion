@@ -1,5 +1,8 @@
 TheGmCompanion::Application.routes.draw do
   root 'campaigns#index'
+  
+  resources :users
+  get '/signup' => "users#new"
 
   resources :campaigns, shallow: true do
     resources :campaign_objects
