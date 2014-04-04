@@ -19,8 +19,11 @@ class CharactersController < ApplicationController
     @character = Character.create(character_params)
     @character.campaign_object = CampaignObject.create(campaign_object_params)
     @character.campaign_object.campaign_id = params[:campaign_id]
-    @character.save
-    redirect_to :action => :show, :id => @character
+    if @character.save
+      redirect_to :action => :show, :id => @character
+    else
+      render :new
+    end
   end
   
   def show

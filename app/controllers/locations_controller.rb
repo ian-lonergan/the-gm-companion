@@ -19,8 +19,11 @@ class LocationsController < ApplicationController
     @location = Location.create(location_params)
     @location.campaign_object = CampaignObject.create(campaign_object_params)
     @location.campaign_object.campaign_id = params[:campaign_id]
-    @location.save
-    redirect_to :action => :show, :id => @location
+    if @location.save
+      redirect_to :action => :show, :id => @location
+    else
+      render :new
+    end
   end
   
   def show
