@@ -1,4 +1,5 @@
 = form_for @user do |f|
+  = render 'shared/error_messages', errors: f.object.errors
   = f.label :username
   = f.text_field :username
   = f.label :email

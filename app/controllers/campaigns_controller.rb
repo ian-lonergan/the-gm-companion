@@ -16,6 +16,7 @@ class CampaignsController < ApplicationController
       redirect_to :action => :show, :id => @campaign
     else
       choose_campaign(nil)
+      render :new
     end
   end
   
