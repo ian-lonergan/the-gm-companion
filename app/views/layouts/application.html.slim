@@ -28,10 +28,7 @@ html
     - if current_campaign?
       #leftColumn
       #campaignChosenContent
-        #alerts
-          - flash.each do |key, value|
-            div class=("alert alert-#{key}")
-              = value
+        = render 'shared/flash'
         = yield
     - else
       #noCampaignChosenContent

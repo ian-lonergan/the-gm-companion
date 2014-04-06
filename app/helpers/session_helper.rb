@@ -20,10 +20,17 @@ module SessionHelper
   end
   
   def logged_in_user
-    p "~~~~~~~~~~~~In logged_in_user~~~~~~~~~~~~"
     unless logged_in?
-      store_location
-      redirect_to login_url
+      respond_to do |format|
+        format.html {
+            store_location
+            redirect_to login_url
+          }
+        format.js   {
+            store_location request.referer
+            render js: "window.location.pathname='#{login_path}'"
+          }
+      end
     end
   end
 
@@ -35,13 +42,6 @@ module SessionHelper
   
   def current_user?(user)
     user == current_user
-  end
-  
-  def authenticate
-    unless logged_in?
-      store_location
-      redirect_to signin_url
-    end
   end
   
   def choose_campaign(campaign)
@@ -57,8 +57,8 @@ module SessionHelper
   end
   
   private
-    def store_location
-      session[:return_to] = request.fullpath
+    def store_location(override = nil)
+       session[:return_to] = override.nil? ? request.fullpath : override  
     end
     
     def redirect_back_or(default)

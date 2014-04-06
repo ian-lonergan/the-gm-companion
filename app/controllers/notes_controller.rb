@@ -22,9 +22,9 @@ class NotesController < ApplicationController
   
   private
     def correct_user
-      p "~~~~~~~~~~~~In correct_user~~~~~~~~~~~~"
-      @campaign_object = current_user.campaign_objects.find(params[:campaign_object_id])
-      if @campaign_object.nil?
+      item = current_user.notes.find_by(id: params[:id])
+      item ||= current_user.campaign_objects.find_by(id: params[:campaign_object_id])
+      if item.nil?
         flash[:error] = 'You don\'t have access to do this.'
         redirect_back_or :back
       end

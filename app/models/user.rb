@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :campaigns, foreign_key: :owner_id
   has_many :campaign_objects, through: :campaigns
+  has_many :notes, through: :campaign_objects
   
   before_save { self.email = email.downcase }
   before_create :create_remember_token
