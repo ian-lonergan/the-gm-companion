@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
+  has_many :campaigns, foreign_key: :owner_id
+  has_many :campaign_objects, through: :campaigns
+  
   before_save { self.email = email.downcase }
   before_create :create_remember_token
+  
   validates :username,  presence:   true,
                     format:     { with: /\A[a-zA-Z][a-zA-Z0-9_-]+\Z/ },
                     length:     { minimum: 3, maximum: 15 },

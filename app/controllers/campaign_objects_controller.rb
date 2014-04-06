@@ -1,4 +1,6 @@
 class CampaignObjectsController < ApplicationController
+  before_action :logged_in_user, only: [:create, :update, :edit, :destroy]
+  before_action :correct_user, only: [:create, :update, :edit, :destroy]
   
   def index
     @campaign_objects = CampaignObject.all

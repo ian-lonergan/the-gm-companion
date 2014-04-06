@@ -1,5 +1,5 @@
 = form_for @campaign do |f|
-  = render 'shared/error_messages', errors: f.object.errors
+  = f.hidden_field :owner_id, value: current_user.id
   = f.label :name
   = f.text_field :name
   = f.label :description

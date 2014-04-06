@@ -1,4 +1,7 @@
 class CampaignsController < ApplicationController
+  before_action :logged_in_user, only: [:new, :create, :update, :edit, :destroy]
+  before_action :correct_user, only: [:update, :edit, :destroy]
+  
   def index
     choose_campaign(nil)
     @campaigns = Campaign.all
@@ -56,7 +59,12 @@ class CampaignsController < ApplicationController
   end
   
   def campaign_params
-    params.require(:campaign).permit(:name, :description, :outline)
+    params.require(:campaign).permit(:name, :description, :outline, :owner_id)
   end
   
+  private
+    def correct_user
+      @campaign = current_user.campaigns.find_by(id: params[:id])
+      redirect_to root_url if @campaign.nil?
+    end
 end

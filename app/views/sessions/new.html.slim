@@ -1,10 +1,13 @@
-h1 Sign in
+h1 Login
 
-= form_for(:session, url:sessions_path) do |f|
-  = f.label :username
-  = f.text_field :username
-  = f.label :password
-  = f.password_field :password
-  = f.submit "Login"
+- if !logged_in?
+  = form_for(:session, url:sessions_path) do |f|
+    = f.label :username
+    = f.text_field :username
+    = f.label :password
+    = f.password_field :password
+    = f.submit "Login"
 
-p New user? #{link_to "Sign up", signup_path} now!
+  p New user? #{link_to "Sign up", signup_path} now!
+- else
+  p You are already logged in as #{link_to current_user.username, current_user}.

@@ -1,0 +1,7 @@
+h1[class="page-name"]
+  = @user.username
+h2 Campaigns
+ul
+  - @user.campaigns.each do |campaign|
+    li
+      = render campaign
