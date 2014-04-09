@@ -1,4 +1,4 @@
 table[class="notes"]
   tbody
     = render notes
-    = render partial: "notes/new", locals: {campaign_object: campaign_object}
+    = render partial: "notes/new", locals: {campaign_object: campaign_object} if logged_in? && current_user?(campaign_object.owner)
