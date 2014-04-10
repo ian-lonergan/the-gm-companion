@@ -1,8 +1,5 @@
-tr[class="notes-new"]
+li[class="note notes-new"]
   = form_for :note, url: [campaign_object, :notes], remote: true, method: :post do |f|
     = f.hidden_field :campaign_object_id, value: campaign_object.id
-    td
-      = f.text_field :text, placeholder: 'New note'
-    td
-    td 
-      = f.submit
+    = f.text_field :text, placeholder: 'New note'
+    = f.submit class: 'note-button'
