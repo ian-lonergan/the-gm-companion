@@ -27,7 +27,7 @@ class CampaignObjectsController < ApplicationController
   end
   
   def campaign_object_params
-    params.require(:campaign_object).permit(:name, :abstract, :notes, :campaign_id)
+    params.require(:campaign_object).permit(:name, :abstract, :campaign_id, :picture)
   end
   
 end

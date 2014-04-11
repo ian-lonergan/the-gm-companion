@@ -13,8 +13,8 @@ module CampaignObjectHolder
       campaign_object.abstract
     end
     
-    def notes
-      campaign_object.notes
+    def picture
+      campaign_object.picture
     end
     
     accepts_nested_attributes_for :campaign_object

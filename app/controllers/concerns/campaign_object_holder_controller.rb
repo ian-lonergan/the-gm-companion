@@ -2,7 +2,7 @@ module CampaignObjectHolderController
   extend ActiveSupport::Concern
   
   def campaign_object_params
-    params.require(:campaign_object).permit(:name, :abstract)
+    params.require(:campaign_object).permit(:name, :abstract, :campaign_id, :picture)
   end
   
   private

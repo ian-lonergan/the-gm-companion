@@ -2,6 +2,15 @@ h1[class="page-name"]
   = @location.name
 p[class="header-gap"]
   = @location.abstract
+table[class="info-box"]
+  tbody
+    tr
+      td.image colspan="2"
+        = image_tag @location.picture
+    tr
+      th Name:
+      td
+        = @location.name
 h2 Map
 = image_tag @location.map
 p

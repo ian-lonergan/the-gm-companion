@@ -2,6 +2,15 @@ h1[class="page-name"]
   = @story.name
 p[class="header-gap"]
   = @story.abstract
+table[class="info-box"]
+  tbody
+    tr
+      td.image colspan="2"
+        = image_tag @story.picture
+    tr
+      th Name:
+      td
+        = @story.name
 h2 Story
 p
   = @story.story_text

@@ -1,11 +1,14 @@
 h1[class="page-name header-gap"] Edit #{@story.name}
-= form_for [@campaign, @story] do |f|
+= form_for [@campaign, @story], html: { multipart: :true } do |f|
   h2 Basic Information
   = fields_for :campaign_object, @story.campaign_object do |c| 
     = c.label :name
     = c.text_field :name
     = c.label :abstract
     = c.text_field :abstract
+    = image_tag @story.picture
+    = c.label :picture
+    = c.file_field :picture
   h2 Story Text
   = f.label :story_text
   = f.text_area :story_text

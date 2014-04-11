@@ -37,6 +37,7 @@ class LocationsController < ApplicationController
   end
   
   def update
+    debugger
     @location = Location.find(params[:id])
     @campaign_object = @location.campaign_object
     if @location.update_attributes(location_params) and @campaign_object.update_attributes(campaign_object_params)

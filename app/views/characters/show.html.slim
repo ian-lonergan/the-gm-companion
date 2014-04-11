@@ -5,23 +5,26 @@ p[class="header-gap"]
 table[class="info-box"]
   tbody
     tr
-      td Name:
+      td.image colspan="2"
+        = image_tag @character.picture
+    tr
+      th Name:
       td
         = @character.name
     tr
-      td Race:
+      th Race:
       td
         = @character.race
     tr
-      td Gender:
+      th Gender:
       td
         = @character.gender
     tr
-      td Class:
+      th Class:
       td
         = @character.character_class
     tr
-      td Level:
+      th Level:
       td
         = @character.level
 h2 Description
