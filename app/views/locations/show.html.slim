@@ -14,7 +14,7 @@ table[class="info-box"]
 h2 Map
 = image_tag @location.map
 p
-  = @location.map_key
+  = simple_format(@location.map_key)
 h2 Notes
 = render partial: "notes/index", locals: {notes: @location.notes, campaign_object: @location.campaign_object}
 = button_to 'Edit', [:edit, @location], method: :get if logged_in? && current_user?(@location.owner)

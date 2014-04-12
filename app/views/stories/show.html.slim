@@ -13,7 +13,7 @@ table[class="info-box"]
         = @story.name
 h2 Story
 p
-  = @story.story_text
+  = simple_format(@story.story_text)
 h2 Notes
 = render partial: "notes/index", locals: {notes: @story.notes, campaign_object: @story.campaign_object}
 = button_to 'Edit', [:edit, @story], method: :get if logged_in? && current_user?(@story.owner)
