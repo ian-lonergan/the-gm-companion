@@ -9,23 +9,7 @@ html
   
   body
     header
-      - if current_campaign?
-        #campaignChosenHeader
-          #logoSmall
-            = link_to image_tag("logo-small.png"), root_url
-          nav
-            ul
-              li
-                = link_to 'Stories', [current_campaign, :stories]
-              li
-                = link_to 'Characters', [current_campaign, :characters]
-              li
-                = link_to 'Locations', [current_campaign, :locations]
-      - else
-        #noCampaignChosenHeader
-          #logoLarge
-            = link_to image_tag("logo-large.png"), root_url
-    
+      = render current_campaign? ? 'layouts/campaign_chosen_header' : 'layouts/no_campaign_chosen_header'
     - if current_campaign?
       #leftColumn
       #campaignChosenContent
@@ -33,5 +17,5 @@ html
         = yield
     - else
       #noCampaignChosenContent
+        = render 'shared/flash'
         = yield
-    
