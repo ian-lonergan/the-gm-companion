@@ -1,9 +1,12 @@
-= @campaign.name
-br
-= @campaign.description
-br
-= @campaign.outline
-br
+h1[class="page-name"]
+  = @campaign.name
+div[class="header-gap"]
+  | by: 
+  = link_to @campaign.owner.username, @campaign.owner
+h2 Description
+= simple_format(@campaign.description)
+h2 Outline
+= simple_format(@campaign.outline)
 = button_to 'Edit', [:edit, @campaign], method: :get if logged_in? && current_user?(@campaign.owner)
 = button_to 'Delete', @campaign, method: :delete, data: { confirm: 'Are you sure?'} if logged_in? && current_user?(@campaign.owner)
 = button_to 'Back to Index', campaigns_path, method: :get

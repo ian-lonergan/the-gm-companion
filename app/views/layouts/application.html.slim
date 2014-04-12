@@ -15,6 +15,11 @@ html
         = render 'layouts/no_campaign_chosen_header'
     - if current_campaign?
       #leftColumn
+        h2
+          = link_to current_campaign.name, current_campaign
+        small
+          | by: 
+          = link_to current_campaign.owner.username, current_campaign.owner
       #campaignChosenContent
         = render 'shared/flash'
         = yield
