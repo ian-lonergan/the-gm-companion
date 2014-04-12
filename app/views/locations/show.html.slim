@@ -17,5 +17,5 @@ p
   = @location.map_key
 h2 Notes
 = render partial: "notes/index", locals: {notes: @location.notes, campaign_object: @location.campaign_object}
-= button_to 'Edit', [:edit, @location], method: :get
-= button_to 'Back to Index', locations_path, method: :get
+= button_to 'Edit', [:edit, @location], method: :get if logged_in? && current_user?(@location.owner)
+= button_to 'Back to Index', [current_campaign, :locations], method: :get

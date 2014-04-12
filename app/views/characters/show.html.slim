@@ -33,5 +33,5 @@ p
 h2 Notes
 = render partial: "notes/index", locals: {notes: @character.notes, campaign_object: @character.campaign_object}
 br
-= button_to 'Edit', [:edit, @character], method: :get
-= button_to 'Back to Index', characters_path, method: :get
+= button_to 'Edit', [:edit, @character], method: :get if logged_in? && current_user?(@character.owner)
+= button_to 'Back to Index', [current_campaign, :characters], method: :get

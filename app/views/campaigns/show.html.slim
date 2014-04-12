@@ -4,6 +4,6 @@ br
 br
 = @campaign.outline
 br
-= button_to 'Edit', [:edit, @campaign], method: :get
-= button_to 'Delete', @campaign, method: :delete, data: { confirm: 'Are you sure?'}
+= button_to 'Edit', [:edit, @campaign], method: :get if logged_in? && current_user?(@campaign.owner)
+= button_to 'Delete', @campaign, method: :delete, data: { confirm: 'Are you sure?'} if logged_in? && current_user?(@campaign.owner)
 = button_to 'Back to Index', campaigns_path, method: :get

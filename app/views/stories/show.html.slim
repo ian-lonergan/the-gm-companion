@@ -16,5 +16,5 @@ p
   = @story.story_text
 h2 Notes
 = render partial: "notes/index", locals: {notes: @story.notes, campaign_object: @story.campaign_object}
-= button_to 'Edit', [:edit, @story], method: :get
-= button_to 'Back to Index', stories_path, method: :get
+= button_to 'Edit', [:edit, @story], method: :get if logged_in? && current_user?(@story.owner)
+= button_to 'Back to Index', [current_campaign, :stories], method: :get

@@ -1,3 +1,16 @@
 #noCampaignChosenHeader
   #logoLarge
     = link_to image_tag("logo-large.png"), root_url
+  div[class="userBar"]
+    - if logged_in?
+      ul
+        li
+          = link_to current_user.username, current_user
+        li
+          = link_to "Log out", "/logout"
+    - else
+      ul
+        li
+          = link_to "Sign up", [:new, :user]
+        li
+          = link_to "Log in", "/login"
