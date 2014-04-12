@@ -9,7 +9,10 @@ html
   
   body
     header
-      = render current_campaign? ? 'layouts/campaign_chosen_header' : 'layouts/no_campaign_chosen_header'
+      - if current_campaign?
+        = render 'layouts/campaign_chosen_header'
+      - else
+        = render 'layouts/no_campaign_chosen_header'
     - if current_campaign?
       #leftColumn
       #campaignChosenContent
