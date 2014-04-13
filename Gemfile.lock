@@ -31,6 +31,10 @@ GEM
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     autotest-standalone (4.5.11)
+    aws-sdk (1.38.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt (3.1.7)
     bcrypt (3.1.7-x64-mingw32)
     bcrypt-ruby (3.1.5)
@@ -77,8 +81,11 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
+    mini_portile (0.5.3)
     minitest (4.7.5)
     multi_json (1.9.0)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     paperclip (4.1.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -162,6 +169,7 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuidtools (2.1.4)
 
 PLATFORMS
   ruby
@@ -170,6 +178,7 @@ PLATFORMS
 DEPENDENCIES
   autotest
   autotest-standalone
+  aws-sdk
   bcrypt-ruby (~> 3.1.2)
   coffee-rails (~> 4.0.0)
   debugger

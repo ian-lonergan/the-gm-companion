@@ -29,20 +29,22 @@ describe User do
     FactoryGirl.build(:user, password: "password", password_confirmation: "not password").should_not be_valid
   end
   it "disallows repeated usernames" do
+    invitation = FactoryGirl.create(:invitation, key: "NewKey")
     FactoryGirl.create(:user, username: "duplicate", email: "unique@test.com")
-    FactoryGirl.build(:user, username: "duplicate", email: "other@test.com").should_not be_valid
+    FactoryGirl.build(:user, username: "duplicate", email: "other@test.com", invitation: invitation).should_not be_valid
   end
   it "disallows repeated emails" do
+    invitation = FactoryGirl.create(:invitation, key: "NewKey")
     FactoryGirl.create(:user, username: "unique", email: "duplicate@test.com")
-    FactoryGirl.build(:user, username: "other", email: "duplicate@test.com").should_not be_valid
+    FactoryGirl.build(:user, username: "other", email: "duplicate@test.com", invitation: invitation).should_not be_valid
   end
   it "authenticates with the valid password" do
-    user = FactoryGirl.create(:user, password: "password", password_confirmation: "password")
+    user = FactoryGirl.create(:user)
     found_user = User.find_by(username: user.username)
     expect(user).to eq found_user.authenticate(user.password)
   end
   it "fails to authenticate with the invalid password" do
-    user = FactoryGirl.create(:user, password: "password", password_confirmation: "password")
+    user = FactoryGirl.create(:user, password: "Password1", password_confirmation: "Password1")
     found_user = User.find_by(username: user.username)
     expect(user).to_not eq found_user.authenticate("invalid-password")
   end
