@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   
   has_secure_password
   validates :password,    length:     { minimum: 6 },
-                          format:     { with: /\A(?=.*[A-Z])(?=.[a-z])(?=.*[0-9]).{6,}\Z/,
+                          format:     { with: /\A(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).+\Z/,
                                         message: "must contain at least one upper case letter, one lower case letter, and one digit " }
   
   def User.new_remember_token
