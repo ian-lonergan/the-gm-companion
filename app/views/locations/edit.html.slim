@@ -6,7 +6,7 @@ h1[class="page-name header-gap"] Edit #{@location.name}
     = c.text_field :name
     = c.label :abstract
     = c.text_field :abstract
-    = image_tag @location.picture
+    = image_tag @location.picture if @location.campaign_object.picture?
     = c.label :picture
     = c.file_field :picture
   h2 Map

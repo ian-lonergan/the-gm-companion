@@ -6,7 +6,7 @@ table[class="info-box"]
   tbody
     tr
       td.image colspan="2"
-        = image_tag @location.picture
+        = image_tag @location.picture if @location.campaign_object.picture?
     tr
       th Name:
       td

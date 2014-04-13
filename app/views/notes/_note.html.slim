@@ -2,7 +2,8 @@ li[class="note note-#{note.id}"]
   = button_to 'Delete', note, class: 'note-button', method: :delete, remote: true, data: { confirm: 'Are you sure?'}, campaign_object_id: note.campaign_object.id
   .note-header
     = link_to(note.campaign_object.campaign_object_holder, class:"note-name") do
-      = image_tag note.campaign_object.picture(:tiny), class:"note-image" 
+      .note-image-container
+        = image_tag note.campaign_object.picture(:tiny), class:"note-image" if note.campaign_object.picture?
       strong #{note.campaign_object.name}
     small[class="timestamp"] #{time_ago_in_words(note.created_at)} ago
   p
