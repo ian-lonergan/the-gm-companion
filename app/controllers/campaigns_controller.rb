@@ -13,7 +13,7 @@ class CampaignsController < ApplicationController
   end
   
   def create
-    @campaign = Campaign.create(campaign_params)
+    @campaign = current_user.campaigns.build(campaign_params)
     if @campaign.save
       choose_campaign(@campaign)
       redirect_to :action => :show, :id => @campaign
@@ -59,7 +59,7 @@ class CampaignsController < ApplicationController
   end
   
   def campaign_params
-    params.require(:campaign).permit(:name, :description, :outline, :owner_id)
+    params.require(:campaign).permit(:name, :description, :outline)
   end
   
   private

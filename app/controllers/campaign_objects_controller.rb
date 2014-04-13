@@ -7,9 +7,12 @@ class CampaignObjectsController < ApplicationController
   end
   
   def create
-    @campaign_object = CampaignObject.create(campaign_object_params)
-    @campaign_object.save
-    redirect_to :action => :show, :id => @campaign_object
+    @campaign_object = current_campaign.campaign_objects.build(campaign_object_params)
+    if @campaign_object.save
+      redirect_to :action => :show, :id => @campaign_object
+    else
+      render :new
+    end
   end
     
   def update
@@ -27,7 +30,7 @@ class CampaignObjectsController < ApplicationController
   end
   
   def campaign_object_params
-    params.require(:campaign_object).permit(:name, :abstract, :campaign_id, :picture)
+    params.require(:campaign_object).permit(:name, :abstract, :picture)
   end
   
 end
