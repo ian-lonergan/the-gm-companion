@@ -8,6 +8,14 @@ class NotesController < ApplicationController
     @note.save
   end
   
+  def index
+    if params[:campaign_id]
+      @notes = Campaign.find(params[:campaign_id]).notes
+    else
+      @notes = Note.all
+    end
+  end
+  
   def update
     @note = Note.find(params[:id])
   end

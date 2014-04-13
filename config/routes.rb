@@ -12,6 +12,7 @@ TheGmCompanion::Application.routes.draw do
     resources :stories
     resources :characters
     resources :locations
+    resources :notes
   end
   
   resources :campaign_objects, shallow: true do

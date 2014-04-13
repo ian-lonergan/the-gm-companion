@@ -15,11 +15,14 @@ html
         = render 'layouts/no_campaign_chosen_header'
     - if current_campaign?
       #leftColumn
-        h2
+        h2.no-bottom-margin
           = link_to current_campaign.name, current_campaign
-        small
+        small.header-gap
           | by: 
           = link_to current_campaign.owner.username, current_campaign.owner
+        ul
+          li
+            = link_to "Notes", [current_campaign, :notes]
       #campaignChosenContent
         = render 'shared/flash'
         = yield
