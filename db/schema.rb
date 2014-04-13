@@ -48,7 +48,8 @@ ActiveRecord::Schema.define(version: 20140413014037) do
   end
 
   create_table "invitations", force: true do |t|
-    t.string "key"
+    t.string  "key"
+    t.integer "user_id"
   end
 
   create_table "locations", force: true do |t|

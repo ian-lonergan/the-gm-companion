@@ -1,9 +1,13 @@
+h1 Sign up
 = form_for @user do |f|
   = render 'shared/error_messages', errors: f.object.errors
   = f.label :username
   = f.text_field :username
   = f.label :email
   = f.text_field :email
+  = fields_for :invitation do |c| 
+    = c.label "Invite Key"
+    = c.text_field :key
   = f.label :password
   = f.password_field :password
   = f.label :password_confirmation
