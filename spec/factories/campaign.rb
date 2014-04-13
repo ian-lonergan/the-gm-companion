@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :campaign do
+    association :owner, factory: :user
     name "Campaign name."
     description "This is the description of the story."
     outline "This is the outline of the story."
