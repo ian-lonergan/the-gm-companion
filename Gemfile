@@ -37,7 +37,10 @@ group :development, :test do
   gem 'autotest-standalone'
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+  gem 'aws-sdk'
+end 
 
 # Templating
 gem 'slim-rails'
