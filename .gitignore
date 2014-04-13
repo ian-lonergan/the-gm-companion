@@ -21,3 +21,7 @@
 
 # ignore uploads
 /public/system/
+
+# ingore certain initializers
+/config/initializers/app_env_vars.rb
+/config/initializers/secret_token.rb
