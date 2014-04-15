@@ -13,6 +13,7 @@ TheGmCompanion::Application.routes.draw do
     resources :characters
     resources :locations
     resources :notes
+    resources :encounters
   end
   
   resources :campaign_objects, shallow: true do
@@ -23,5 +24,6 @@ TheGmCompanion::Application.routes.draw do
   resources :stories, only: [:index, :edit, :update, :destroy]
   resources :characters, only: [:index, :edit, :update, :destroy]
   resources :locations, only: [:index, :edit, :update, :destroy]
+  resources :encounters, only: [:index, :edit, :update, :destroy]
   resources :notes, only: [:index, :edit, :update, :destroy]
 end

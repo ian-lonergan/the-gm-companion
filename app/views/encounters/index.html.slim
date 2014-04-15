@@ -1,0 +1,6 @@
+ul
+  - @encounters.each_with_index do |encounter, index|
+    li
+      = render encounter
+  li
+    = link_to 'New Encounter', [:new, current_campaign, :encounter]

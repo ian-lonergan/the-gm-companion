@@ -9,4 +9,5 @@ class CampaignObject < ActiveRecord::Base
   validates :name, presence: true
   validates :abstract, presence: true
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+  validates :campaign, presence: true
 end

@@ -1,0 +1,30 @@
+h1[class="page-name"]
+  = @encounter.name
+p[class="header-gap"]
+  = @encounter.abstract
+table[class="info-box"]
+  tbody
+    tr
+      td.image colspan="2"
+        = image_tag @encounter.picture if @encounter.campaign_object.picture?
+    tr
+      th Name:
+      td
+        = @encounter.name
+    tr
+      th Challenge Level:
+      td
+        = @encounter.challenge_level
+    tr
+      th Location:
+      td
+        = link_to @encounter.location.name, @encounter.location
+h2 Description
+= simple_format(@encounter.description)
+h2 Loot
+= simple_format(@encounter.description)
+h2 Notes
+= render partial: "notes/index", locals: {notes: @encounter.notes, campaign_object: @encounter.campaign_object}
+br
+= button_to 'Edit', [:edit, @encounter], method: :get if logged_in? && current_user?(@encounter.owner)
+= button_to 'Back to Index', [current_campaign, :encounters], method: :get
