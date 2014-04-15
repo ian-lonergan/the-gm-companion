@@ -5,6 +5,10 @@ module CampaignObjectHolderController
     params.require(:campaign_object).permit(:name, :abstract, :campaign_id, :picture)
   end
   
+  def campaign_object_attributes
+    [:name, :abstract, :campaign_id, :picture]
+  end
+  
   private
     def correct_user
       p params

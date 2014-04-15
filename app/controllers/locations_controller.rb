@@ -4,11 +4,7 @@ class LocationsController < ApplicationController
   before_action :correct_user, only: [:new, :create, :update, :edit, :destroy]
 
   def index
-    if params[:campaign_id]
-      @locations = Campaign.find(params[:campaign_id]).locations
-    else
-      @locations = Location.all
-    end
+    @locations = Campaign.find(params[:campaign_id]).locations
   end
   
   def new

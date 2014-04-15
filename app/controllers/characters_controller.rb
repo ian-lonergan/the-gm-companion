@@ -4,11 +4,7 @@ class CharactersController < ApplicationController
   before_action :correct_user, only: [:new, :create, :update, :edit, :destroy]
 
   def index
-    if params[:campaign_id]
-      @characters = Campaign.find(params[:campaign_id]).characters
-    else
-      @characters = Character.all
-    end
+    @characters = Campaign.find(params[:campaign_id]).characters.search(params[:search_query])
   end
   
   def new
