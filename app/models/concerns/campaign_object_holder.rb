@@ -6,18 +6,7 @@ module CampaignObjectHolder
     has_one :owner, through: :campaign_object
     has_one :campaign, through: :campaign_object
     has_many :notes, through: :campaign_object
-    
-    def name
-      campaign_object.name
-    end
-    
-    def abstract
-      campaign_object.abstract
-    end
-    
-    def picture
-      campaign_object.picture
-    end
+    delegate :name, :abstract, :picture, to: :campaign_object
     
     accepts_nested_attributes_for :campaign_object, update_only: true
     validates :campaign_object, presence: { message: "No campaign object detected" }

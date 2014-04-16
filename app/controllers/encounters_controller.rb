@@ -14,11 +14,13 @@ class EncountersController < ApplicationController
   def new
     @encounter = Encounter.new
     @encounter.build_campaign_object
+    @encounter.encounter_opponents.build
     @encounter.campaign = Campaign.find(params[:campaign_id])
   end
   
   def create
     @encounter = Encounter.new(encounter_params)
+    @encounter.campaign = Campaign.find(params[:campaign_id])
     if @encounter.save
       redirect_to :action => :show, :id => @encounter
     else
@@ -49,7 +51,11 @@ class EncountersController < ApplicationController
   end
   
   def encounter_params
-    params.require(:encounter).permit(:challenge_level, :location_id, :loot, :description, campaign_object_attributes: campaign_object_attributes)
+    params.require(:encounter).permit(:challenge_level, :location_id, :loot, :description, campaign_object_attributes: campaign_object_attributes, encounter_opponents_attributes: encounter_opponents_attributes)
+  end
+  
+  def encounter_opponents_attributes
+    [:id, :character_id, :_destroy, :count]
   end
   
 end

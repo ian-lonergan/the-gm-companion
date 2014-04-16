@@ -2,9 +2,9 @@ class Encounter < ActiveRecord::Base
   include CampaignObjectHolder
   
   belongs_to :location
-  #has_many :encounters_characters
-  #has_many :opponents, class_name: "Character", through: :encounters_characters
+  has_many :encounter_opponents
+  has_many :opponents, source: :character, through: :encounter_opponents
   
+  accepts_nested_attributes_for :encounter_opponents, allow_destroy: true
   validates :location, presence: true
-  #validates :opponents, presence: true
 end

@@ -52,6 +52,15 @@ gem 'paperclip', '~> 4.1'
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
+# Pagination
+gem 'will_paginate', '~> 3.0'
+
+# Nested form
+gem 'nested_form'
+
+# Autocomplete
+gem 'rails4-autocomplete'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

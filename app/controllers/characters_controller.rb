@@ -4,7 +4,12 @@ class CharactersController < ApplicationController
   before_action :correct_user, only: [:new, :create, :update, :edit, :destroy]
 
   def index
-    @characters = Campaign.find(params[:campaign_id]).characters.search(params[:search_query])
+    characters = Campaign.find(params[:campaign_id]).characters
+    if params[:search_query]
+      @characters = characters.search(params[:search_query]).paginate(per_page: 10, page: params[:page])
+    else
+      @characters = characters.paginate(per_page: 5, page: params[:page])
+    end
   end
   
   def new

@@ -5,7 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-ian = User.create(username: 'iplon', email: 'lonergan.ian@gmail.com', password: 'password', password_confirmation: 'password')
+invitation = Invitation.create(key: SecureRandom.base64(6))
+ian = User.create(username: 'test', email: 'test@test.com', invitation: invitation, password: 'Password1', password_confirmation: 'Password1')
 dead_head = Campaign.create(name: 'Dead Head', owner: ian, description: 'A sealed god of destruction is going to be freed from its divine prison, and the characters must stop it.', outline: 'Things happen and stuff.')
 tarravan = CampaignObject.create(campaign: dead_head, name: 'Taravan', abstract: 'Area surrounding Taravan\'s Rest.')
 Location.create(campaign_object: tarravan, map_key: 'Not actually filled out', map: File.new('spec/assets/images/Tarravan.png'))
