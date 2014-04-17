@@ -19,6 +19,7 @@ class EncountersController < ApplicationController
   end
   
   def create
+    debugger
     @encounter = Encounter.new(encounter_params)
     @encounter.campaign = Campaign.find(params[:campaign_id])
     if @encounter.save

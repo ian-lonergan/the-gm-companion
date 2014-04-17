@@ -18,6 +18,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# Use jquery ui
+gem 'jquery-ui-rails'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
@@ -59,7 +62,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'nested_form'
 
 # Autocomplete
-gem 'rails4-autocomplete'
+gem 'rails3-jquery-autocomplete'
 
 # Use unicorn as the app server
 # gem 'unicorn'

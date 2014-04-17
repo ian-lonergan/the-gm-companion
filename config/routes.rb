@@ -26,4 +26,8 @@ TheGmCompanion::Application.routes.draw do
   resources :locations, only: [:index, :edit, :update, :destroy]
   resources :encounters, only: [:index, :edit, :update, :destroy]
   resources :notes, only: [:index, :edit, :update, :destroy]
+  
+  resources :encounter_opponents do
+    get :autocomplete_campaign_object_name, on: :collection
+  end
 end

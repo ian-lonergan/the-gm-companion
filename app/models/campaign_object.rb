@@ -5,6 +5,8 @@ class CampaignObject < ActiveRecord::Base
   has_one :owner, through: :campaign
   
   has_attached_file :picture, styles: { original: '600x600>', tiny:'75x75'}
+  
+  scope :character, -> { where(campaign_object_holder_type: 'Character') }
 
   validates :name, presence: true
   validates :abstract, presence: true
