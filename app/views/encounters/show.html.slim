@@ -19,6 +19,12 @@ table[class="info-box"]
       th Location:
       td
         = link_to @encounter.location.name, @encounter.location
+h2 Opponents
+ul
+  - @encounter.encounter_opponents.each_with_index do |encounter_opponent|
+    li
+      = link_to encounter_opponent.character.name, encounter_opponent.character
+      |  x #{encounter_opponent.count}
 h2 Description
 = simple_format(@encounter.description)
 h2 Loot

@@ -1,12 +1,4 @@
 h1[class="page-name header-gap"] New Encounter
-
-= form_for :encounter_opponents do |c|
-  = c.label :opponent_id
-  = c.autocomplete_field :character_id, autocomplete_campaign_object_name_encounter_opponents_path
-  = c.label :count
-  = c.select :count, ((1..25).map {|i| [i,i]}), {}, {class: "inline-form"}
-
-
 = nested_form_for [@encounter.campaign, @encounter], html: { multipart: :true } do |f|
   = render 'shared/error_messages', errors: f.object.errors
   h2 Basic Information
@@ -24,8 +16,8 @@ h1[class="page-name header-gap"] New Encounter
   div.form-section
     = f.fields_for :encounter_opponents do |c|
       = c.hidden_field :character_id
-      = c.label :opponent_id
-      = autocomplete_field_tag :character_name, '', autocomplete_campaign_object_name_encounter_opponents_path, update_elements: [campaign_object_holder_id: '#encounter_encounter_opponents_attributes_0_character_id']
+      = c.label :character_name
+      = autocomplete_field_tag :character_name, '', autocomplete_campaign_object_name_encounter_opponents_path, update_elements: {campaign_object_holder_id: "#encounter_encounter_opponents_attributes_#{c.index}_character_id"}
       = c.label :count
       = c.select :count, ((1..25).map {|i| [i,i]}), {}, {class: "inline-form"}
       = c.link_to_remove "Remove this opponent"
