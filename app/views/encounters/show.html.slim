@@ -28,7 +28,7 @@ ul
 h2 Description
 = simple_format(@encounter.description)
 h2 Loot
-= simple_format(@encounter.description)
+= simple_format(@encounter.loot)
 h2 Notes
 = render partial: "notes/index", locals: {notes: @encounter.notes, campaign_object: @encounter.campaign_object}
 br
