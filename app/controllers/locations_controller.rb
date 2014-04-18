@@ -1,7 +1,9 @@
 class LocationsController < ApplicationController
   include CampaignObjectHolderController
+  before_action :campaign_set
   before_action :logged_in_user, only: [:new, :create, :update, :edit, :destroy]
-  before_action :correct_user, only: [:new, :create, :update, :edit, :destroy]
+  before_action :correct_campaign_object_owner, only: [:update, :edit, :destroy]
+  before_action :correct_campaign_owner, only: [:new, :create]
 
   def index
     @locations = Campaign.find(params[:campaign_id]).locations
