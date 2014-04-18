@@ -11,9 +11,9 @@ module CampaignObjectHolderController
   
   private
     def campaign_set
-      campaign_object = CampaignObject.find_by(campaign_object_holder_id: params[:id])
-      campaign = campaign_object.campaign unless campaign_object.nil?
-      campaign ||= Campaign.find_by(id: params[:campaign_id])
+      campaign = Campaign.find_by(id: params[:campaign_id])
+      campaign_object = CampaignObject.find_by(campaign_object_holder_id: params[:id]) if campaign.nil?
+      campaign ||= campaign_object.campaign unless campaign_object.nil?
       campaign ||= current_campaign
       if campaign.nil?
         flash[:error] = 'Unable to properly set the campaign'
