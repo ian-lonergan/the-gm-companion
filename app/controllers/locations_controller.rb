@@ -6,7 +6,7 @@ class LocationsController < ApplicationController
   before_action :correct_campaign_owner, only: [:new, :create]
 
   def index
-    @locations = Campaign.find(params[:campaign_id]).locations
+    @locations = Campaign.find(params[:campaign_id]).locations.paginate(per_page: 10, page: params[:page])
   end
   
   def new
@@ -35,7 +35,6 @@ class LocationsController < ApplicationController
   end
   
   def update
-    debugger
     @location = Location.find(params[:id])
     @campaign_object = @location.campaign_object
     if @location.update_attributes(location_params) and @campaign_object.update_attributes(campaign_object_params)
@@ -46,8 +45,8 @@ class LocationsController < ApplicationController
   end
   
   def destroy
-    @deleted = Location.find(params[:id]).destroy
-    redirect_to :action => :index
+    Location.find(params[:id]).destroy
+    redirect_to campaign_locations_path(current_campaign)
   end
   
   def location_params

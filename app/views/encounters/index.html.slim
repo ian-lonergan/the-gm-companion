@@ -1,6 +1,7 @@
+= will_paginate
 ul
-  - @encounters.each_with_index do |encounter, index|
+  - @encounters.each do |encounter|
     li
       = render encounter
-  li
-    = link_to 'New Encounter', [:new, current_campaign, :encounter]
+= will_paginate
+= link_to 'New Encounter', [:new, current_campaign, :encounter]

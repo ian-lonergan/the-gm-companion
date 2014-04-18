@@ -14,6 +14,7 @@ module CampaignObjectHolderController
       campaign_object = CampaignObject.find_by(campaign_object_holder_id: params[:id])
       campaign = campaign_object.campaign unless campaign_object.nil?
       campaign ||= Campaign.find_by(id: params[:campaign_id])
+      campaign ||= current_campaign
       if campaign.nil?
         flash[:error] = 'Unable to properly set the campaign'
         redirect_back_or :back

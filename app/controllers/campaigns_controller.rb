@@ -4,7 +4,7 @@ class CampaignsController < ApplicationController
   
   def index
     choose_campaign(nil)
-    @campaigns = Campaign.all
+    @campaigns = Campaign.paginate(per_page: 10, page: params[:page])
   end
   
   def new
@@ -48,7 +48,7 @@ class CampaignsController < ApplicationController
       redirect_to :action => :show, :id => @campaign
     else
       choose_campaign(nil)
-      redirect_to :action => :index
+      render :edit
     end
   end
   

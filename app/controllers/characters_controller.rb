@@ -6,12 +6,7 @@ class CharactersController < ApplicationController
   before_action :correct_campaign_owner, only: [:new, :create]
 
   def index
-    characters = Campaign.find(params[:campaign_id]).characters
-    if params[:search_query]
-      @characters = characters.search(params[:search_query]).paginate(per_page: 10, page: params[:page])
-    else
-      @characters = characters.paginate(per_page: 5, page: params[:page])
-    end
+    @characters = Campaign.find(params[:campaign_id]).characters.paginate(per_page: 10, page: params[:page])
   end
   
   def new
@@ -45,13 +40,13 @@ class CharactersController < ApplicationController
     if @character.update_attributes(character_params) and @campaign_object.update_attributes(campaign_object_params)
       redirect_to :action => :show, :id => @character
     else
-      redirect_to :action => :index
+      render :edit
     end
   end
   
   def destroy
-    @deleted = Character.find(params[:id]).destroy
-    redirect_to :action => :index
+    Character.find(params[:id]).destroy
+    redirect_to campaign_characters_path(current_campaign)
   end
   
   def character_params

@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :update, :edit, :destroy]
-  before_action :correct_user, only: [:new, :create, :update, :edit, :destroy]
+  before_action :correct_note_owner, only: [:update, :edit, :destroy]
+  before_action :correct_campaign_object_owner, only: [:new, :create]  
   
   def create
     @note = Note.new(note_params)
@@ -10,7 +11,7 @@ class NotesController < ApplicationController
   
   def index
     if params[:campaign_id]
-      @notes = Campaign.find(params[:campaign_id]).notes
+      @notes = Campaign.find(params[:campaign_id]).notes.paginate(per_page: 10, page: params[:page])
     else
       @notes = Note.all
     end
@@ -29,10 +30,17 @@ class NotesController < ApplicationController
   end
   
   private
-    def correct_user
-      item = current_user.notes.find_by(id: params[:id])
-      item ||= current_user.campaign_objects.find_by(id: params[:campaign_object_id])
-      if item.nil?
+    def correct_note_owner
+      note = current_user.notes.find_by(id: params[:id])
+      if note.nil?
+        flash[:error] = 'You don\'t have access to do this.'
+        redirect_back_or :back
+      end
+    end
+    
+    def correct_campaign_object_owner
+      campaign_object = current_user.campaign_objects.find_by(id: params[:campaign_object_id])
+      if campaign_object.nil?
         flash[:error] = 'You don\'t have access to do this.'
         redirect_back_or :back
       end

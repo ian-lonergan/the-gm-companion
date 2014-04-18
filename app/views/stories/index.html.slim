@@ -1,6 +1,7 @@
+= will_paginate
 ul
-  - @stories.each_with_index do |story, index|
+  - @stories.each do |story|
     li
       = render story
-  li
-    = link_to 'New Story', [:new, current_campaign, :story]
+= will_paginate
+= link_to 'New Story', [:new, current_campaign, :story]

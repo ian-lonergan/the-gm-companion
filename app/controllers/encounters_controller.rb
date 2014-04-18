@@ -6,11 +6,7 @@ class EncountersController < ApplicationController
   before_action :correct_campaign_owner, only: [:new, :create]
 
   def index
-    if params[:campaign_id]
-      @encounters = Campaign.find(params[:campaign_id]).encounters
-    else
-      @encounters = Encounter.all
-    end
+    @encounters = Campaign.find(params[:campaign_id]).encounters.paginate(per_page: 10, page: params[:page])
   end
   
   def new
@@ -49,8 +45,8 @@ class EncountersController < ApplicationController
   end
   
   def destroy
-    @deleted = Encounter.find(params[:id]).destroy
-    redirect_to :action => :index
+    Encounter.find(params[:id]).destroy
+    redirect_to campaign_encounters_path(current_campaign)
   end
   
   def encounter_params

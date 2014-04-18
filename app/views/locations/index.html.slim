@@ -1,6 +1,7 @@
+= will_paginate
 ul
-  - @locations.each_with_index do |location, index|
+  - @locations.each do |location|
     li
       = render location
-  li
-    = link_to 'New Location', [:new, current_campaign, :location]
+= will_paginate
+= link_to 'New Location', [:new, current_campaign, :location]

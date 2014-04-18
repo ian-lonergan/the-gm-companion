@@ -18,7 +18,7 @@ table[class="info-box"]
     tr
       th Location:
       td
-        = link_to @encounter.location.name, @encounter.location
+        = link_to @encounter.location.name, @encounter.location unless @encounter.location.nil?
 h2 Opponents
 ul
   - @encounter.encounter_opponents.each_with_index do |encounter_opponent|

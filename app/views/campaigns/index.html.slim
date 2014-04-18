@@ -1,6 +1,7 @@
+= will_paginate
 ul
   - @campaigns.each do |campaign|
     li
       = render campaign
-  li
-    = link_to 'New Campaign', [:new, :campaign]
+= will_paginate
+= link_to 'New Campaign', [:new, :campaign]

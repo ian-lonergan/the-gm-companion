@@ -1,8 +1,7 @@
 = will_paginate
 ul
-  - @characters.each_with_index do |character, index|
+  - @characters.each do |character|
     li
       = render character
 = will_paginate
-
 = link_to 'New Character', [:new, current_campaign, :character]

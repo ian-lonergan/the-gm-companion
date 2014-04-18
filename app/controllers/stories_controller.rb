@@ -6,11 +6,7 @@ class StoriesController < ApplicationController
   before_action :correct_campaign_owner, only: [:new, :create]
   
   def index
-    if params[:campaign_id]
-      @stories = Campaign.find(params[:campaign_id]).stories
-    else
-      @stories = Story.all
-    end
+    @stories = Campaign.find(params[:campaign_id]).stories.paginate(per_page: 10, page: params[:page])
   end
   
   def new
@@ -49,8 +45,8 @@ class StoriesController < ApplicationController
   end
   
   def destroy
-    @deleted = Story.find(params[:id]).destroy
-    redirect_to :action => :index
+    Story.find(params[:id]).destroy
+    redirect_to campaign_stories_path(current_campaign)
   end
   
   def story_params
