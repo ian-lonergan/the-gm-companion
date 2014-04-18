@@ -6,7 +6,7 @@ module CampaignObjectHolderController
   end
   
   def campaign_object_attributes
-    [:name, :abstract, :campaign_id, :picture]
+    [:id, :name, :abstract, :campaign_id, :picture]
   end
   
   private

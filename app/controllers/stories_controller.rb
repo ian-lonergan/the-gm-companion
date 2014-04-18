@@ -10,15 +10,14 @@ class StoriesController < ApplicationController
   end
   
   def new
-    @campaign = Campaign.find(params[:campaign_id])
-    @campaign_object = CampaignObject.new
     @story = Story.new
+    @story.build_campaign_object
+    @story.campaign = Campaign.find(params[:campaign_id])
   end
   
   def create
     @story = Story.create(story_params)
-    @story.campaign_object = CampaignObject.create(campaign_object_params)
-    @story.campaign_object.campaign_id = params[:campaign_id]
+    @story.campaign = Campaign.find(params[:campaign_id])
     if @story.save
       redirect_to :action => :show, :id => @story
     else
@@ -36,11 +35,10 @@ class StoriesController < ApplicationController
   
   def update
     @story = Story.find(params[:id])
-    @campaign_object = @story.campaign_object
-    if @story.update_attributes(story_params) and @campaign_object.update_attributes(campaign_object_params)
+    if @story.update_attributes(story_params)
       redirect_to :action => :show, :id => @story
     else
-      redirect_to :action => :index
+      render :edit
     end
   end
   
@@ -50,7 +48,7 @@ class StoriesController < ApplicationController
   end
   
   def story_params
-    params.require(:story).permit(:story_text)
+    params.require(:story).permit(:story_text, campaign_object_attributes: campaign_object_attributes)
   end
   
 end

@@ -10,15 +10,14 @@ class CharactersController < ApplicationController
   end
   
   def new
-    @campaign = Campaign.find(params[:campaign_id])
-    @campaign_object = CampaignObject.new
     @character = Character.new
+    @character.build_campaign_object
+    @character.campaign = Campaign.find(params[:campaign_id])
   end
   
   def create
     @character = Character.create(character_params)
-    @character.campaign_object = CampaignObject.create(campaign_object_params)
-    @character.campaign_object.campaign_id = params[:campaign_id]
+    @character.campaign = Campaign.find(params[:campaign_id])
     if @character.save
       redirect_to :action => :show, :id => @character
     else
@@ -36,8 +35,7 @@ class CharactersController < ApplicationController
   
   def update
     @character = Character.find(params[:id])
-    @campaign_object = @character.campaign_object
-    if @character.update_attributes(character_params) and @campaign_object.update_attributes(campaign_object_params)
+    if @character.update_attributes(character_params)
       redirect_to :action => :show, :id => @character
     else
       render :edit
@@ -50,7 +48,7 @@ class CharactersController < ApplicationController
   end
   
   def character_params
-    params.require(:character).permit(:character_class, :race, :level, :gender, :description)
+    params.require(:character).permit(:character_class, :race, :level, :gender, :description, campaign_object_attributes: campaign_object_attributes)
   end
   
 end

@@ -10,15 +10,14 @@ class LocationsController < ApplicationController
   end
   
   def new
-    @campaign = Campaign.find(params[:campaign_id])
-    @campaign_object = CampaignObject.new
     @location = Location.new
+    @location.build_campaign_object
+    @location.campaign = Campaign.find(params[:campaign_id])
   end
   
   def create
     @location = Location.create(location_params)
-    @location.campaign_object = CampaignObject.create(campaign_object_params)
-    @location.campaign_object.campaign_id = params[:campaign_id]
+    @location.campaign = Campaign.find(params[:campaign_id])
     if @location.save
       redirect_to :action => :show, :id => @location
     else
@@ -36,11 +35,10 @@ class LocationsController < ApplicationController
   
   def update
     @location = Location.find(params[:id])
-    @campaign_object = @location.campaign_object
-    if @location.update_attributes(location_params) and @campaign_object.update_attributes(campaign_object_params)
+    if @location.update_attributes(location_params)
       redirect_to :action => :show, :id => @location
     else
-      redirect_to :action => :index
+      render :edit
     end
   end
   
@@ -50,7 +48,7 @@ class LocationsController < ApplicationController
   end
   
   def location_params
-    params.require(:location).permit(:map, :map_key)
+    params.require(:location).permit(:map, :map_key, campaign_object_attributes: campaign_object_attributes)
   end
   
 end
