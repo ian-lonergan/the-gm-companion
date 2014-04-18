@@ -10,6 +10,6 @@ h1[class="page-name header-gap"] New story
     = c.label :picture
     = c.file_field :picture
   h2 Story Text
-  = f.label :story_text
-  = f.text_area :story_text
+  = f.text_area :story_text, class: 'tinymce'
+  = tinymce
   = f.submit

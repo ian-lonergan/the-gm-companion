@@ -64,6 +64,9 @@ gem 'nested_form'
 # Autocomplete
 gem 'rails3-jquery-autocomplete'
 
+# WYSIWYG editor
+gem 'tinymce-rails'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
