@@ -1,0 +1,26 @@
+h1[class="page-name"]
+  = @organization.name
+p[class="header-gap"]
+  = @organization.abstract
+table[class="info-box"]
+  tbody
+    tr
+      td.image colspan="2"
+        = image_tag @organization.picture if @organization.campaign_object.picture?
+    tr
+      th Name:
+      td
+        = @organization.name
+= simple_format(@organization.summary)
+h2 Members
+ul
+  - @organization.members.each do |member|
+    li
+      = link_to member.name, member
+h2 Description
+= simple_format(@organization.organization_text)
+h2 Notes
+= render partial: "notes/index", locals: {notes: @organization.notes, campaign_object: @organization.campaign_object}
+br
+= button_to 'Edit', [:edit, @organization], method: :get if logged_in? && current_user?(@organization.owner)
+= button_to 'Back to Index', [current_campaign, :encounters], method: :get

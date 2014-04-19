@@ -14,6 +14,7 @@ TheGmCompanion::Application.routes.draw do
     resources :locations
     resources :notes
     resources :encounters
+    resources :organizations
   end
   
   resources :campaign_objects, shallow: true do
@@ -25,9 +26,14 @@ TheGmCompanion::Application.routes.draw do
   resources :characters, only: [:index, :edit, :update, :destroy]
   resources :locations, only: [:index, :edit, :update, :destroy]
   resources :encounters, only: [:index, :edit, :update, :destroy]
+  resources :organizations, only: [:index, :edit, :update, :destroy]
   resources :notes, only: [:index, :edit, :update, :destroy]
   
   resources :encounter_opponents do
     get :autocomplete_campaign_object_name, on: :collection
+  end
+  
+  resources :organization_members do
+    get :autocomplete_character_name, on: :collection
   end
 end
