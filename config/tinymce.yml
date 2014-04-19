@@ -26,3 +26,5 @@ style_formats: [
         {title: "Justify", icon: "alignjustify", format: "alignjustify"}
     ]}
 ]
+plugins:
+  - link
