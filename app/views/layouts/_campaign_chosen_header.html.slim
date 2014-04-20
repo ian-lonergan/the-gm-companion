@@ -11,6 +11,8 @@
         = link_to 'Locations', [current_campaign, :locations]
       li
         = link_to 'Encounters', [current_campaign, :encounters]
+      li
+        = link_to 'Organizations', [current_campaign, :organizations]
   div[class="userBar userBarSmall"]
     - if logged_in?
       ul

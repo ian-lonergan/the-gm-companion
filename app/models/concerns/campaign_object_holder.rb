@@ -9,6 +9,6 @@ module CampaignObjectHolder
     delegate :name, :abstract, :picture, to: :campaign_object
     
     accepts_nested_attributes_for :campaign_object, update_only: true
-    validates :campaign_object, presence: { message: "No campaign object detected" }
+    validates :campaign_object, presence: true
   end
 end
