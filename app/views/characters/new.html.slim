@@ -2,13 +2,7 @@ h1[class="page-name header-gap"] New Character
 = form_for [@character.campaign, @character], html: { multipart: :true } do |f|
   = render 'shared/error_messages', errors: f.object.errors
   h2 Basic Information
-  = f.fields_for :campaign_object, @character.campaign_object do |c| 
-    = c.label :name
-    = c.text_field :name
-    = c.label :abstract
-    = c.text_field :abstract
-    = c.label :picture
-    = c.file_field :picture
+  = render partial: "campaign_objects/new", locals: {f: f}
   h2 Character Details
   = f.label :character_class
   = f.text_field :character_class
@@ -18,6 +12,4 @@ h1[class="page-name header-gap"] New Character
   = f.text_field :level
   = f.label :gender
   = f.text_field :gender
-  = f.label :description
-  = f.text_area :description
   = f.submit

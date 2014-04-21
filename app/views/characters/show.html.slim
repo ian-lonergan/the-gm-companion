@@ -27,9 +27,7 @@ table[class="info-box"]
       th Level:
       td
         = @character.level
-h2 Description
-p
-  = simple_format(@character.description)
+= raw @character.object_text
 h2 Notes
 = render partial: "notes/index", locals: {notes: @character.notes, campaign_object: @character.campaign_object}
 br

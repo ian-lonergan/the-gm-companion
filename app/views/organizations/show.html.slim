@@ -11,14 +11,12 @@ table[class="info-box"]
       th Name:
       td
         = @organization.name
-= simple_format(@organization.summary)
+= raw @organization.object_text
 h2 Members
 ul
   - @organization.members.each do |member|
     li
       = link_to member.name, member
-h2 Description
-= simple_format(@organization.organization_text)
 h2 Notes
 = render partial: "notes/index", locals: {notes: @organization.notes, campaign_object: @organization.campaign_object}
 br

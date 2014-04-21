@@ -11,9 +11,7 @@ table[class="info-box"]
       th Name:
       td
         = @story.name
-h2 Story
-p
-  = raw @story.story_text
+= raw @story.object_text
 h2 Notes
 = render partial: "notes/index", locals: {notes: @story.notes, campaign_object: @story.campaign_object}
 = button_to 'Edit', [:edit, @story], method: :get if logged_in? && current_user?(@story.owner)
