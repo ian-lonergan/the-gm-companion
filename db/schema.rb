@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419145220) do
+ActiveRecord::Schema.define(version: 20140421002021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140419145220) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.text     "object_text"
   end
 
   create_table "campaigns", force: true do |t|
@@ -44,7 +45,6 @@ ActiveRecord::Schema.define(version: 20140419145220) do
     t.string  "race"
     t.integer "level"
     t.string  "gender"
-    t.text    "description"
   end
 
   create_table "encounter_opponents", force: true do |t|
@@ -56,8 +56,6 @@ ActiveRecord::Schema.define(version: 20140419145220) do
   create_table "encounters", force: true do |t|
     t.integer "challenge_level"
     t.integer "location_id"
-    t.text    "loot"
-    t.text    "description"
   end
 
   create_table "invitations", force: true do |t|
@@ -86,12 +84,9 @@ ActiveRecord::Schema.define(version: 20140419145220) do
   end
 
   create_table "organizations", force: true do |t|
-    t.text "summary"
-    t.text "organization_text"
   end
 
   create_table "stories", force: true do |t|
-    t.text "story_text"
   end
 
   create_table "users", force: true do |t|
