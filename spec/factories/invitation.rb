@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :invitation do
-    key "abcdefg"
+    key SecureRandom.base64(6)
     user nil
   end
 end
