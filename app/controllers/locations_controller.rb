@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   include CampaignObjectHolderController
-  before_action :campaign_set
+  before_action :campaign_set_from_campaign_object, only: [:show, :edit, :update, :destroy]
+  before_action :campaign_set_from_campaign_id, only: [:index, :create, :new]
   before_action :logged_in_user, only: [:new, :create, :update, :edit, :destroy]
   before_action :correct_campaign_object_owner, only: [:update, :edit, :destroy]
   before_action :correct_campaign_owner, only: [:new, :create]

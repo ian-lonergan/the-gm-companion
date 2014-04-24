@@ -1,4 +1,6 @@
 class CampaignsController < ApplicationController
+  before_action :campaign_set, only: [:show, :edit, :update]
+  before_action :campaign_unset, only: [:create, :new, :destroy]
   before_action :logged_in_user, only: [:new, :create, :update, :edit, :destroy]
   before_action :correct_user, only: [:update, :edit, :destroy]
   
@@ -59,12 +61,26 @@ class CampaignsController < ApplicationController
   end
   
   def campaign_params
-    params.require(:campaign).permit(:name, :description, :outline)
+    params.require(:campaign).permit(:name, :campaign_text)
   end
   
   private
     def correct_user
       @campaign = current_user.campaigns.find_by(id: params[:id])
       redirect_to root_url if @campaign.nil?
+    end
+    
+    def campaign_set
+      campaign = Campaign.find(params[:id])
+      if campaign.nil?
+        flash[:error] = 'Unable to properly set the campaign'
+        redirect_to root_url
+      else
+        choose_campaign(campaign)
+      end
+    end
+    
+    def campaign_unset
+      choose_campaign(nil)
     end
 end

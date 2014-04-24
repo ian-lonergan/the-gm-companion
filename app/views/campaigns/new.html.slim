@@ -3,8 +3,7 @@ h1 New Campaign
   = f.hidden_field :owner_id, value: current_user.id
   = f.label :name
   = f.text_field :name
-  = f.label :description
-  = f.text_area :description
-  = f.label :outline
-  = f.text_area :outline
+  = f.label :campaign_text
+  = f.text_area :campaign_text, class: 'tinymce'
+  = tinymce
   = f.submit
