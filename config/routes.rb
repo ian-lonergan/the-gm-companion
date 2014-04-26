@@ -36,4 +36,8 @@ TheGmCompanion::Application.routes.draw do
   resources :organization_members do
     get :autocomplete_character_name, on: :collection
   end
+  
+  scope '/admin' do
+    resources :invitations, only: [:index, :create]
+  end
 end

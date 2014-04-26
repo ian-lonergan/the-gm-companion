@@ -1,0 +1,7 @@
+h1 Invitations
+= will_paginate
+table[class="invitations"]
+table[class="invitations"]
+  = render @invitations
+= button_to 'Create New', {class: 'invitation-button', url: invitations_path}, {method: :post, remote: true}
+= will_paginate

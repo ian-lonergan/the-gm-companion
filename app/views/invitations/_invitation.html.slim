@@ -1,0 +1,5 @@
+tr[class="invitation invitation-#{invitation.id}"]
+  td
+    = invitation.key
+  td
+    = link_to invitation.user.username, invitation.user unless invitation.user.nil?
