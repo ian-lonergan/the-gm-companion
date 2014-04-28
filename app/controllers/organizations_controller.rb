@@ -13,7 +13,6 @@ class OrganizationsController < ApplicationController
   def new
     @organization = Organization.new
     @organization.build_campaign_object
-    @organization.organization_members.build
     @organization.campaign = Campaign.find(params[:campaign_id])
   end
   

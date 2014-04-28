@@ -13,7 +13,6 @@ class EncountersController < ApplicationController
   def new
     @encounter = Encounter.new
     @encounter.build_campaign_object
-    @encounter.encounter_opponents.build
     @encounter.campaign = Campaign.find(params[:campaign_id])
   end
   
