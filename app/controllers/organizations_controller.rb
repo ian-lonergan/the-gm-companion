@@ -7,7 +7,7 @@ class OrganizationsController < ApplicationController
   before_action :correct_campaign_owner, only: [:new, :create]
 
   def index
-    @organizations = Campaign.find(params[:campaign_id]).organizations.paginate(per_page: 10, page: params[:page])
+    @organizations = Campaign.find(params[:campaign_id]).organizations.includes(:campaign_object).order("campaign_objects.created_at asc").paginate(per_page: 10, page: params[:page])
   end
   
   def new

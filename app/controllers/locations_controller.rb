@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
   before_action :correct_campaign_owner, only: [:new, :create]
 
   def index
-    @locations = Campaign.find(params[:campaign_id]).locations.paginate(per_page: 10, page: params[:page])
+    @locations = Campaign.find(params[:campaign_id]).locations.includes(:campaign_object).order("campaign_objects.created_at asc").paginate(per_page: 10, page: params[:page])
   end
   
   def new

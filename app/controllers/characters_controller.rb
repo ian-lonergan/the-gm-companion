@@ -7,7 +7,7 @@ class CharactersController < ApplicationController
   before_action :correct_campaign_owner, only: [:new, :create]
 
   def index
-    @characters = Campaign.find(params[:campaign_id]).characters.paginate(per_page: 10, page: params[:page])
+    @characters = Campaign.find(params[:campaign_id]).characters.includes(:campaign_object).order("campaign_objects.created_at asc").paginate(per_page: 10, page: params[:page])
   end
   
   def new

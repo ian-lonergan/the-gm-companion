@@ -7,7 +7,7 @@ class StoriesController < ApplicationController
   before_action :correct_campaign_owner, only: [:new, :create]
   
   def index
-    @stories = Campaign.find(params[:campaign_id]).stories.paginate(per_page: 10, page: params[:page])
+    @stories = Campaign.find(params[:campaign_id]).stories.includes(:campaign_object).order("campaign_objects.created_at asc").paginate(per_page: 10, page: params[:page])
   end
   
   def new
