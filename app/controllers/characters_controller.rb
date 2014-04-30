@@ -5,9 +5,11 @@ class CharactersController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :update, :edit, :destroy]
   before_action :correct_campaign_object_owner, only: [:update, :edit, :destroy]
   before_action :correct_campaign_owner, only: [:new, :create]
+  
+  helper_method :sort_column
 
   def index
-    @characters = Campaign.find(params[:campaign_id]).characters.includes(:campaign_object).order("campaign_objects.created_at asc").paginate(per_page: 10, page: params[:page])
+    @characters = Campaign.find(params[:campaign_id]).characters.includes(:campaign_object).order("campaign_objects." + sort_column + " asc").paginate(per_page: 10, page: params[:page])
   end
   
   def new

@@ -6,6 +6,10 @@ module CampaignObjectHolderController
   end
   
   private
+    def sort_column
+      CampaignObject.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+    end
+  
     def campaign_set_from_campaign_object
       campaign_object = CampaignObject.find_by(campaign_object_holder_type: params[:controller].classify, campaign_object_holder_id: params[:id])
       campaign = campaign_object.campaign unless campaign_object.nil?
