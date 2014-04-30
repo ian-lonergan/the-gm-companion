@@ -6,8 +6,10 @@ class StoriesController < ApplicationController
   before_action :correct_campaign_object_owner, only: [:update, :edit, :destroy]
   before_action :correct_campaign_owner, only: [:new, :create]
   
+  helper_method :sort_column
+  
   def index
-    @stories = Campaign.find(params[:campaign_id]).stories.includes(:campaign_object).order("campaign_objects.created_at asc").paginate(per_page: 10, page: params[:page])
+    @stories = Campaign.find(params[:campaign_id]).stories.includes(:campaign_object).order("campaign_objects." + sort_column + " asc").paginate(per_page: 10, page: params[:page])
   end
   
   def new
