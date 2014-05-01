@@ -13,7 +13,7 @@ table[class="info-box"]
         = @location.name
 = raw @location.object_text
 h2 Map
-= image_tag @location.map
+= image_tag @location.map if @location.map?
 p
   = simple_format(@location.map_key)
 h2 Notes
