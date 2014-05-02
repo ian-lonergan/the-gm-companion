@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140426153751) do
+ActiveRecord::Schema.define(version: 20140502202828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140426153751) do
     t.string  "gender"
     t.string  "status"
     t.string  "alignment"
+    t.integer "location_id"
   end
 
   create_table "encounter_opponents", force: true do |t|
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 20140426153751) do
     t.integer  "map_file_size"
     t.datetime "map_updated_at"
     t.text     "map_key"
+    t.integer  "parent_id"
   end
 
   create_table "notes", force: true do |t|

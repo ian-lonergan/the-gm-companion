@@ -1,6 +1,7 @@
 class Character < ActiveRecord::Base
   include CampaignObjectHolder
   
+  belongs_to :location
   has_many :encounter_opponents
   has_many :encounters, through: :encounter_opponents
   

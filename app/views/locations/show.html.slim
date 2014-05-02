@@ -11,11 +11,19 @@ table[class="info-box"]
       th Name:
       td
         = @location.name
+    tr
+      th Parent Location:
+      td
+        = link_to @location.parent.name, @location.parent unless @location.parent.nil?
 = raw @location.object_text
 h2 Map
 = image_tag @location.map if @location.map?
 p
   = simple_format(@location.map_key)
+h2 Child Locations
+= render @location.children
+h2 Characters
+= render @location.characters
 h2 Notes
 = render partial: "notes/index", locals: {notes: @location.notes, campaign_object: @location.campaign_object}
 = button_to 'Edit', [:edit, @location], method: :get if logged_in? && current_user?(@location.owner)

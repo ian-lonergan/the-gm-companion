@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
   before_action :correct_campaign_owner, only: [:new, :create]
   
   helper_method :sort_column
-
+  
   def index
     @locations = Campaign.find(params[:campaign_id]).locations.includes(:campaign_object).order("campaign_objects." + sort_column + " asc").paginate(per_page: 10, page: params[:page])
   end
@@ -51,7 +51,7 @@ class LocationsController < ApplicationController
   end
   
   def location_params
-    params.require(:location).permit(:map, :map_key, campaign_object_attributes: campaign_object_attributes)
+    params.require(:location).permit(:map, :map_key, :parent_id, campaign_object_attributes: campaign_object_attributes)
   end
   
 end

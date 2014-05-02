@@ -16,4 +16,6 @@ h1[class="page-name header-gap"] New Character
   = f.text_field :status
   = f.label :alignment
   = f.text_field :alignment
+  = f.label :location
+  = f.collection_select :location_id, @character.campaign.locations, :id, :name, include_blank: 'None'
   = f.submit

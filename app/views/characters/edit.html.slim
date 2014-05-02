@@ -16,5 +16,7 @@ h1[class="page-name header-gap"] Edit #{@character.name}
   = f.text_field :status
   = f.label :alignment
   = f.text_field :alignment
+  = f.label :location
+  = f.collection_select :location_id, @character.campaign.locations, :id, :name, include_blank: 'None'
   = f.submit
 = button_to 'Delete', @character, method: :delete, data: { confirm: 'Are you sure?'}
