@@ -8,7 +8,6 @@ TheGmCompanion::Application.routes.draw do
   get "/logout" => "sessions#destroy"
   
   resources :campaigns, shallow: true do
-    resources :campaign_objects
     resources :stories
     resources :characters
     resources :locations
@@ -19,9 +18,9 @@ TheGmCompanion::Application.routes.draw do
   
   resources :campaign_objects, shallow: true do
     resources :notes
+    get :autocomplete_name, on: :collection
   end
   
-  resources :campaign_objects, only: [:index, :create, :update, :destroy]
   resources :stories, only: [:index, :edit, :update, :destroy]
   resources :characters, only: [:index, :edit, :update, :destroy]
   resources :locations, only: [:index, :edit, :update, :destroy]
