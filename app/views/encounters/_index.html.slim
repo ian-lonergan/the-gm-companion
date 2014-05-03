@@ -1,0 +1,12 @@
+table
+  thead
+    tr
+      th Name
+      th Abstract
+  tbody
+    - @encounters.each do |encounter|
+      tr
+        td
+          = link_to encounter.name, encounter
+        td
+          = encounter.abstract

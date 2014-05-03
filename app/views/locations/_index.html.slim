@@ -1,0 +1,12 @@
+table
+  thead
+    tr
+      th Name
+      th Abstract
+  tbody
+    - @locations.each do |location|
+      tr
+        td
+          = link_to location.name, location
+        td
+          = location.abstract

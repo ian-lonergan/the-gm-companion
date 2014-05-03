@@ -1,8 +1,4 @@
 | Sort by: #{sortable 'created_at', 'Last Created'} #{sortable 'updated_at', 'Last Updated'} #{sortable 'name'}
-= will_paginate
-ul
-  - @stories.each do |story|
-    li
-      = render story
+= render 'index'
 = will_paginate
 = link_to 'New Story', [:new, current_campaign, :story]

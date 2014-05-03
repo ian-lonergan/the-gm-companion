@@ -1,0 +1,12 @@
+table
+  thead
+    tr
+      th Name
+      th Abstract
+  tbody
+    - @stories.each do |story|
+      tr
+        td
+          = link_to story.name, story
+        td
+          = story.abstract

@@ -1,0 +1,12 @@
+table
+  thead
+    tr
+      th Name
+      th Abstract
+  tbody
+    - @characters.each do |character|
+      tr
+        td
+          = link_to character.name, character
+        td
+          = character.abstract

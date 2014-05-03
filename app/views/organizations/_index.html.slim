@@ -1,0 +1,12 @@
+table
+  thead
+    tr
+      th Name
+      th Abstract
+  tbody
+    - @organizations.each do |organization|
+      tr
+        td
+          = link_to organization.name, organization
+        td
+          = organization.abstract
