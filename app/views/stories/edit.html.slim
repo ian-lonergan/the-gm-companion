@@ -3,5 +3,8 @@ h1[class="page-name header-gap"] Edit #{@story.name}
   = render 'shared/error_messages', errors: f.object.errors
   h2 Basic Information
   = render partial: "campaign_objects/edit", locals: {f: f}
+  h2 Story Details
+  = f.label :location
+  = f.collection_select :location_id, @story.campaign.locations, :id, :name, include_blank: 'None'
   = f.submit
 = button_to 'Delete', @story, method: :delete, data: { confirm: 'Are you sure?'}

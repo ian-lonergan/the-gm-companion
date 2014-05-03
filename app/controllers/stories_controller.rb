@@ -51,7 +51,7 @@ class StoriesController < ApplicationController
   end
   
   def story_params
-    params.require(:story).permit(campaign_object_attributes: campaign_object_attributes)
+    params.require(:story).permit(:location_id, campaign_object_attributes: campaign_object_attributes)
   end
   
 end

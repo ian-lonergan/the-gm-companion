@@ -20,10 +20,12 @@ h2 Map
 = image_tag @location.map if @location.map?
 p
   = simple_format(@location.map_key)
-h2 Child Locations
-= render partial: "campaign_objects/index", locals: {campaign_object_holders: @location.children}
 h2 Characters
 = render partial: "campaign_objects/index", locals: {campaign_object_holders: @location.characters}
+h2 Stories
+= render partial: "campaign_objects/index", locals: {campaign_object_holders: @location.stories}
+h2 Child Locations
+= render partial: "campaign_objects/index", locals: {campaign_object_holders: @location.children}
 h2 Notes
 = render partial: "notes/index", locals: {notes: @location.notes, campaign_object: @location.campaign_object}
 = button_to 'Edit', [:edit, @location], method: :get if logged_in? && current_user?(@location.owner)
