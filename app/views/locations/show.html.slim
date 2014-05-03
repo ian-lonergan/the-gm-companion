@@ -21,9 +21,9 @@ h2 Map
 p
   = simple_format(@location.map_key)
 h2 Child Locations
-= render @location.children
+= render partial: "campaign_objects/index", locals: {campaign_object_holders: @location.children}
 h2 Characters
-= render @location.characters
+= render partial: "campaign_objects/index", locals: {campaign_object_holders: @location.characters}
 h2 Notes
 = render partial: "notes/index", locals: {notes: @location.notes, campaign_object: @location.campaign_object}
 = button_to 'Edit', [:edit, @location], method: :get if logged_in? && current_user?(@location.owner)
