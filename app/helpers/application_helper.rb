@@ -1,10 +1,10 @@
 module ApplicationHelper
-  def sortable(column, title = nil)
+  def sortable(column, join = nil, title = nil)
     title ||= column.titleize
-    if column == sort_column
+    if ([join, column] <=> sort_join_column) == 0
       title
     else
-      link_to title, {sort: column}
+      link_to title, {join: join, sort: column}
     end
   end
 end

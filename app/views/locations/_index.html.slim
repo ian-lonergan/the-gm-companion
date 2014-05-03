@@ -1,0 +1,15 @@
+table
+  thead
+    tr
+      th Name
+      th Parent
+      th Abstract
+  tbody
+    - @locations.each do |location|
+      tr
+        td
+          = location.name
+        td
+          = link_to location.parent.name, location.parent unless location.parent.nil?
+        td
+          = location.abstract

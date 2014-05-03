@@ -1,8 +1,5 @@
-| Sort by: #{sortable 'created_at', 'Last Created'} #{sortable 'updated_at', 'Last Updated'} #{sortable 'name'}
+| Sort by: #{sortable 'created_at', :campaign_object, 'Last Created'} #{sortable 'updated_at', :campaign_object, 'Last Updated'} #{sortable 'name', :campaign_object} #{sortable 'name', {parent: :campaign_object}, 'Parent'}
 = will_paginate
-ul
-  - @locations.each do |location|
-    li
-      = render location
+= render 'index'
 = will_paginate
 = link_to 'New Location', [:new, current_campaign, :location]
