@@ -1,20 +1,23 @@
 class CharactersController < ApplicationController
   include CampaignObjectHolderController
-  before_action :campaign_set_from_campaign_object, only: [:show, :edit, :update, :destroy]
+  before_action only: [:show, :edit, :update, :destroy] do
+    campaign_set_from_campaign_object(Character)
+  end
   before_action :campaign_set_from_campaign_id, only: [:index, :create, :new]
   before_action :logged_in_user, only: [:new, :create, :update, :edit, :destroy]
-  before_action :correct_campaign_object_owner, only: [:update, :edit, :destroy]
+  before_action only: [:update, :edit, :destroy] do
+    correct_campaign_object_owner(Character)
+  end
   before_action :correct_campaign_owner, only: [:new, :create]
   
   helper_method :sort_column
 
   def index
-    @characters = Campaign.find(params[:campaign_id]).characters.includes(:campaign_object).order("campaign_objects." + sort_column + " asc").paginate(per_page: 10, page: params[:page])
+    @characters = Campaign.find(params[:campaign_id]).characters.order(sort_column + " asc").paginate(per_page: 10, page: params[:page])
   end
   
   def new
     @character = Character.new
-    @character.build_campaign_object
     @character.campaign = Campaign.find(params[:campaign_id])
   end
   
@@ -29,11 +32,11 @@ class CharactersController < ApplicationController
   end
   
   def show
-    @character = Character.includes(:campaign_object).find(params[:id])
+    @character = Character.find(params[:id])
   end
   
   def edit
-    @character = Character.includes(:campaign_object).find(params[:id])
+    @character = Character.find(params[:id])
   end
   
   def update
@@ -51,7 +54,13 @@ class CharactersController < ApplicationController
   end
   
   def character_params
-    params.require(:character).permit(:character_class, :race, :level, :gender, :status, :alignment, :location_id, campaign_object_attributes: campaign_object_attributes)
+    params.require(:character).permit(:id, :name, :abstract, :campaign_id, :picture, :object_text, \
+      :character_class, :race, :level, :gender, :status, :alignment, :location_id)
   end
+  
+  private
+    def sort_column
+      Location.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+    end
   
 end

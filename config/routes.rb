@@ -16,9 +16,23 @@ TheGmCompanion::Application.routes.draw do
     resources :organizations
   end
   
-  resources :campaign_objects, shallow: true do
+  resources :stories, shallow: true do
     resources :notes
-    get :autocomplete_name, on: :collection
+  end
+  resources :characters, shallow: true do
+    resources :notes
+  end
+  resources :locations, shallow: true do
+    resources :notes
+  end
+  resources :notes, shallow: true do
+    resources :notes
+  end
+  resources :encounters, shallow: true do
+    resources :notes
+  end
+  resources :organizations, shallow: true do
+    resources :notes
   end
   
   resources :stories, only: [:index, :edit, :update, :destroy]

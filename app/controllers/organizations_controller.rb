@@ -51,7 +51,8 @@ class OrganizationsController < ApplicationController
   end
   
   def organization_params
-    params.require(:organization).permit(campaign_object_attributes: campaign_object_attributes, organization_members_attributes: organization_members_attributes)
+    params.require(:organization).permit(:id, :name, :abstract, :campaign_id, :picture, :object_text, \
+      campaign_object_attributes: campaign_object_attributes, organization_members_attributes: organization_members_attributes)
   end
   
   def organization_members_attributes

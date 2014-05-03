@@ -51,7 +51,8 @@ class LocationsController < ApplicationController
   end
   
   def location_params
-    params.require(:location).permit(:map, :map_key, :parent_id, campaign_object_attributes: campaign_object_attributes)
+    params.require(:location).permit(:id, :name, :abstract, :campaign_id, :picture, :object_text, \
+      :map, :map_key, :parent_id, campaign_object_attributes: campaign_object_attributes)
   end
   
 end

@@ -2,13 +2,17 @@ module CampaignObjectHolder
   extend ActiveSupport::Concern
   
   included do
-    has_one :campaign_object, as: :campaign_object_holder, dependent: :destroy
-    has_one :owner, through: :campaign_object
-    has_one :campaign, through: :campaign_object
-    has_many :notes, through: :campaign_object
-    delegate :name, :abstract, :picture, :object_text, to: :campaign_object
+    belongs_to :campaign
+    has_many :notes, as: :campaign_object
+    has_one :owner, through: :campaign
     
-    accepts_nested_attributes_for :campaign_object, update_only: true
-    validates :campaign_object, presence: true
+    has_attached_file :picture, styles: { original: '600x600>', tiny:'75x75'}
+    
+    scope :by_campaign, ->(campaign_id) { where(campaign_id: campaign_id) }
+    
+    validates :name, presence: true
+    validates :abstract, presence: true
+    validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+    validates :campaign, presence: true
   end
 end

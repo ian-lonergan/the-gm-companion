@@ -51,7 +51,8 @@ class EncountersController < ApplicationController
   end
   
   def encounter_params
-    params.require(:encounter).permit(:challenge_level, :location_id, campaign_object_attributes: campaign_object_attributes, encounter_opponents_attributes: encounter_opponents_attributes)
+    params.require(:encounter).permit(:id, :name, :abstract, :campaign_id, :picture, :object_text, \
+      :challenge_level, :location_id, campaign_object_attributes: campaign_object_attributes, encounter_opponents_attributes: encounter_opponents_attributes)
   end
   
   def encounter_opponents_attributes

@@ -7,7 +7,7 @@ class Character < ActiveRecord::Base
   
   def self.search(search_string)
     if search_string
-      joins(:campaign_object).where('campaign_objects.name LIKE ?', "%#{search_string}%")
+      where('name LIKE ?', "%#{search_string}%")
     else
       all
     end

@@ -6,13 +6,9 @@ module CampaignObjectHolderController
   end
   
   private
-    def sort_column
-      CampaignObject.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
-    end
-  
-    def campaign_set_from_campaign_object
-      campaign_object = CampaignObject.find_by(campaign_object_holder_type: params[:controller].classify, campaign_object_holder_id: params[:id])
-      campaign = campaign_object.campaign unless campaign_object.nil?
+    def campaign_set_from_campaign_object(campaign_object_type)
+      campaign_object = campaign_object_type.find(params[:id])
+      campaign = campaign_object.campaign
       if campaign.nil?
         flash[:error] = 'Unable to properly set the campaign'
         redirect_back_or :back
@@ -31,8 +27,9 @@ module CampaignObjectHolderController
       end
     end
   
-    def correct_campaign_object_owner
-      campaign_object = current_user.campaign_objects.find_by(campaign_object_holder_type: params[:controller].classify, campaign_object_holder_id: params[:id])
+    def correct_campaign_object_owner(campaign_object_type)
+      p campaign_object_type.joins(campaign: :owner).where(owner_id: current_user.id).to_sql
+      campaign_object = campaign_object_type.joins(campaign: :owner).where("campaigns.owner_id = #{current_user.id}").find(params[:id])
       if campaign_object.nil?
         flash[:error] = 'You don\'t have access to do this.'
         redirect_back_or :back
