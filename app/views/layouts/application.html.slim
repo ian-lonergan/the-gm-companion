@@ -20,7 +20,7 @@ html
         small
           | by: 
           = link_to current_campaign.owner.username, current_campaign.owner
-        ul
+        ul[class="no-styling"]
           li
             = link_to "Notes", [current_campaign, :notes]
       #campaignChosenContent

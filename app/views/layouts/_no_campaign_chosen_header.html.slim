@@ -3,13 +3,13 @@
     = link_to image_tag("logo-large.png"), root_url
   div[class="userBar"]
     - if logged_in?
-      ul
+      ul[class="no-styling"]
         li
           = link_to current_user.username, current_user
         li
           = link_to "Log out", "/logout"
     - else
-      ul
+      ul[class="no-styling"]
         li
           = link_to "Sign up", [:new, :user]
         li
