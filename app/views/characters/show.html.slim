@@ -34,11 +34,9 @@ table[class="info-box"]
     tr
       th Class:
       td
-        = @character.character_class
-    tr
-      th Level:
-      td
-        = @character.level
+        - @character.character_classes.each do |character_class|
+          | #{character_class.class_name} #{character_class.level}
+          br
     tr
       th Location:
       td

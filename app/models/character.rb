@@ -4,6 +4,9 @@ class Character < ActiveRecord::Base
   belongs_to :location
   has_many :encounter_opponents
   has_many :encounters, through: :encounter_opponents
+  has_many :character_classes
+  
+  accepts_nested_attributes_for :character_classes, allow_destroy: true
   
   def self.search(search_string)
     if search_string
