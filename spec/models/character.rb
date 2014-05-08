@@ -8,20 +8,16 @@ describe Character do
   it "has a valid factory" do
     @character.should be_valid
   end
-  it "is valid without a character class" do
-    @character.character_class = nil
-    @character.should be_valid
-  end
   it "is valid without a race" do
     @character.race = nil
     @character.should be_valid
   end
-  it "is valid without a level" do
-    @character.level = nil
-    @character.should be_valid
-  end
   it "is valid without a gender" do
     @character.gender = nil
+    @character.should be_valid
+  end
+  it "is valid without classes" do
+    @character.character_classes.each { |c| c.delete }
     @character.should be_valid
   end
   it "is invalid without a campaign object" do

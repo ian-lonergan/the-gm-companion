@@ -2,13 +2,12 @@ FactoryGirl.define do
   factory :campaign do
     association :owner, factory: :user
     name "Campaign name."
-    description "This is the description of the story."
-    outline "This is the outline of the story."
+    campaign_text "This is the text of the campaign."
   end
   
   factory :invalid_campaign do
+    association :owner, factory: :user
     name nil
-    description "This is the description of the story."
-    outline "This is the outline of the story."
+    campaign_text "This is the text of the campaign."
   end
 end
