@@ -7,10 +7,7 @@ describe Campaign do
   it "is invalid without a name" do
     FactoryGirl.build(:campaign, name: nil).should_not be_valid
   end
-  it "is valid without a description" do
-    FactoryGirl.build(:campaign, description: nil).should be_valid
-  end
-  it "is valid without a outline" do
-    FactoryGirl.build(:campaign, outline: nil).should be_valid
+  it "is valid without a campaign_text" do
+    FactoryGirl.build(:campaign, campaign_text: nil).should be_valid
   end
 end
