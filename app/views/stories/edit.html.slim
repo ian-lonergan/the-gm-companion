@@ -4,6 +4,8 @@ h1[class="page-name header-gap"] Edit #{@story.name}
   h2 Basic Information
   = render partial: "campaign_objects/edit", locals: {f: f}
   h2 Story Details
+  = f.label :parent_story
+  = f.collection_select :parent_id, @story.campaign.stories, :id, :name, include_blank: 'None'
   = f.label :location
   = f.collection_select :location_id, @story.campaign.locations, :id, :name, include_blank: 'None'
   = f.submit

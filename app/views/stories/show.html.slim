@@ -12,10 +12,16 @@ table[class="info-box"]
       td
         = @story.name
     tr
+      th Parent Story:
+      td
+        = link_to @story.parent.name, @story.parent unless @story.parent.nil?
+    tr
       th Location:
       td
         = link_to @story.location.name, @story.location unless @story.location.nil?
 = raw @story.object_text
+h2 Child Stories
+= render partial: "campaign_objects/index", locals: {campaign_object_holders: @story.children}
 h2 Notes
 = render partial: "notes/index", locals: {notes: @story.notes, campaign_object: @story.campaign_object}
 = button_to 'Edit', [:edit, @story], method: :get if logged_in? && current_user?(@story.owner)
