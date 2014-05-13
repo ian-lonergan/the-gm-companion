@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :campaigns, foreign_key: :owner_id
   has_many :campaign_objects, through: :campaigns
+  has_many :starred
+  has_many :starred_items, through: :starred
   has_many :notes, through: :campaign_objects
   has_one :invitation
   
