@@ -30,6 +30,18 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
   
+  def stared?(item)
+    starred.find_by(starred_item: item)
+  end
+  
+  def star!(item)
+    starred.create!(starred_item: item)
+  end
+  
+  def unstar!(item)
+    starred.find_by(starred_item: item).destroy
+  end
+  
   private
     def create_remember_token
       self.remember_token = User.hash(User.new_remember_token)
