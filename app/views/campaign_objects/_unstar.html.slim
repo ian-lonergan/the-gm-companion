@@ -1,0 +1,2 @@
+= form_for(current_user.stars.find_by(starred_item: item), html: {method: :delete}, remote: true) do |f|
+  = f.submit "Unstar"
