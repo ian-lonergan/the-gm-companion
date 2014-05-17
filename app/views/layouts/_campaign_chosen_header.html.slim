@@ -14,15 +14,4 @@
       li
         = link_to 'Organizations', [current_campaign, :organizations]
   div[class="userBar userBarSmall"]
-    - if logged_in?
-      ul[class="no-styling"]
-        li
-          = link_to current_user.username, current_user
-        li
-          = link_to "Log out", "/logout"
-    - else
-      ul[class="no-styling"]
-        li
-          = link_to "Sign up", [:new, :user]
-        li
-          = link_to "Log in", "/login"
+    = render 'layouts/login'
