@@ -1,5 +1,8 @@
 - if logged_in?
   ul[class="no-styling"]
+    - if current_user.is_admin?
+      li
+        = link_to "Admin", "/admin/invitations"
     li
       = link_to current_user.username, current_user
     li
