@@ -25,7 +25,8 @@ h2 Characters
 h2 Stories
 = render partial: "campaign_objects/index", locals: {campaign_object_holders: @location.stories}
 h2 Child Locations
-= render partial: "nested_location", locals: {location: @location.full_locations(3)}
+ul
+  = render partial: "nested_location", locals: {location: @location.full_locations(3)}
 h2 Notes
 = render partial: "notes/index", locals: {notes: @location.notes, campaign_object: @location.campaign_object}
 = button_to 'Edit', [:edit, @location], method: :get if logged_in? && current_user?(@location.owner)

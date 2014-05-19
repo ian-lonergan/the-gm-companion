@@ -1,11 +1,11 @@
 - if location.is_a?(Location)
   = @location == location ? location.name : link_to(location.name, location) 
 - elsif location.is_a?(Array)
-  - location.each do |l|
-    = render partial: 'nested_location', locals: {location: l}
+  ul.toggleable
+    - location.each do |l|
+      = render partial: 'nested_location', locals: {location: l}
 - elsif location.is_a?(Hash)
   - location.each do |k,v|
-    ul
-      li
-        = render partial: 'nested_location', locals: {location: k}
-      = render partial: 'nested_location', locals: {location: v}
+    li.toggleable
+      = render partial: 'nested_location', locals: {location: k}
+    = render partial: 'nested_location', locals: {location: v}
