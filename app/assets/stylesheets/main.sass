@@ -18,6 +18,16 @@ ul.no-styling
   
 ul.toggleable
   display: none
+  list-style: none
+  
+li.toggleable:before
+  margin-right: 5px
+  
+li.toggleable_collapsed:before
+  content: "+"
+
+li.toggleable_expanded:before
+  content: "-"
   
 p
   margin-top: 0

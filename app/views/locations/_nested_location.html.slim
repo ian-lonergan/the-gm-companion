@@ -6,6 +6,6 @@
       = render partial: 'nested_location', locals: {location: l}
 - elsif location.is_a?(Hash)
   - location.each do |k,v|
-    li.toggleable
+    li[class="#{"toggleable toggleable_collapsed" unless v.nil?}"]
       = render partial: 'nested_location', locals: {location: k}
     = render partial: 'nested_location', locals: {location: v}
