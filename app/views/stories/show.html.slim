@@ -21,7 +21,8 @@ table[class="info-box"]
         = link_to @story.location.name, @story.location unless @story.location.nil?
 = raw @story.object_text
 h2 Child Stories
-= render partial: "campaign_objects/index", locals: {campaign_object_holders: @story.children}
+ul[style="list-style: none;"]
+  = render partial: "nested_story", locals: {story: @story.full_stories(3)}
 h2 Notes
 = render partial: "notes/index", locals: {notes: @story.notes, campaign_object: @story.campaign_object}
 = button_to 'Edit', [:edit, @story], method: :get if logged_in? && current_user?(@story.owner)

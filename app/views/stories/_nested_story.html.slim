@@ -1,0 +1,11 @@
+- if story.is_a?(Story)
+  = @story == story ? story.name : link_to(story.name, story) 
+- elsif story.is_a?(Array)
+  ul.toggleable
+    - story.each do |l|
+      = render partial: 'nested_story', locals: {story: l}
+- elsif story.is_a?(Hash)
+  - story.each do |k,v|
+    li[class="#{"toggleable toggleable_collapsed" unless v.nil?}"]
+      = render partial: 'nested_story', locals: {story: k}
+    = render partial: 'nested_story', locals: {story: v}
