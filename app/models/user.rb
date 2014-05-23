@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :notes, through: :campaign_objects
   has_one :invitation
   
+  acts_as_tagger
+  
   before_create :create_remember_token
   
   validates :username,    presence:   true,

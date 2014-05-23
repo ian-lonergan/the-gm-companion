@@ -67,6 +67,9 @@ gem 'rails3-jquery-autocomplete'
 # WYSIWYG editor
 gem 'tinymce-rails'
 
+# Tags
+gem 'acts-as-taggable-on'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

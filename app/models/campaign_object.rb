@@ -6,6 +6,8 @@ class CampaignObject < ActiveRecord::Base
   
   has_attached_file :picture, styles: { original: '600x600>', tiny:'75x75'}
   
+  acts_as_taggable
+  
   before_save :check_campaign_object_holder
   
   scope :by_type,     ->(type)        { where(campaign_object_holder_type: type) }
