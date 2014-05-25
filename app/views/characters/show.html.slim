@@ -41,6 +41,10 @@ table[class="info-box"]
       th Location:
       td
         = link_to @character.location.name, @character.location unless @character.location.nil?
+    tr
+      th Tags:
+      td
+        = @character.campaign_object.tag_list
 = raw @character.object_text
 h2 Notes
 = render partial: "notes/index", locals: {notes: @character.notes, campaign_object: @character.campaign_object}

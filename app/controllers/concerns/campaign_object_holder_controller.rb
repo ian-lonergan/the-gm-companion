@@ -2,7 +2,7 @@ module CampaignObjectHolderController
   extend ActiveSupport::Concern
     
   def campaign_object_attributes
-    [:id, :name, :abstract, :campaign_id, :picture, :object_text]
+    [:id, :name, :abstract, :campaign_id, :picture, :object_text, :tag_list]
   end
   
   private
