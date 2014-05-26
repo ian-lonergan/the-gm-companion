@@ -94,12 +94,6 @@ ActiveRecord::Schema.define(version: 20140523222044) do
   create_table "organizations", force: true do |t|
   end
 
-  create_table "stars", force: true do |t|
-    t.integer "user_id"
-    t.integer "starred_item_id"
-    t.string  "starred_item_type"
-  end
-
   create_table "stories", force: true do |t|
     t.integer "location_id"
     t.integer "parent_id"

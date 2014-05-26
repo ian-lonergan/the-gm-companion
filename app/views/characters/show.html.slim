@@ -44,7 +44,7 @@ table[class="info-box"]
     tr
       th Tags:
       td
-        = @character.campaign_object.tag_list
+        = @character.campaign_object.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
 = raw @character.object_text
 h2 Notes
 = render partial: "notes/index", locals: {notes: @character.notes, campaign_object: @character.campaign_object}

@@ -12,6 +12,10 @@ class CharactersController < ApplicationController
     @characters = Campaign.find(params[:campaign_id]).characters.includes(:campaign_object).order("campaign_objects." + sort_column + " asc").paginate(per_page: 10, page: params[:page])
   end
   
+  def tags
+    @characters = Campaign.find(params[:campaign_id]).tagged_with(params[:tag]).characters
+  end
+  
   def new
     @character = Character.new
     @character.build_campaign_object

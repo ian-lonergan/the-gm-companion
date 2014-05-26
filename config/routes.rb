@@ -9,7 +9,9 @@ TheGmCompanion::Application.routes.draw do
   
   resources :campaigns, shallow: true do
     resources :stories
-    resources :characters
+    resources :characters do
+      get 'tags/:tag', to: 'characters#tags', on: :collection
+    end
     resources :locations
     resources :notes
     resources :encounters
