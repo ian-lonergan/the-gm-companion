@@ -13,7 +13,7 @@ class CharactersController < ApplicationController
   end
   
   def tags
-    @characters = Campaign.find(params[:campaign_id]).tagged_with(params[:tag]).characters
+    @characters = Campaign.find(params[:campaign_id]).characters.tagged_with(params[:tag]).characters
   end
   
   def new
