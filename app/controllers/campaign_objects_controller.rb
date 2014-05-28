@@ -1,4 +1,8 @@
 class CampaignObjectsController < ApplicationController
+  def show
+    @campaign_object = CampaignObject.find(params[:id])
+  end
+  
   def autocomplete_name
     type = params[:type]
     data = type.nil? \

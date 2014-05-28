@@ -13,7 +13,8 @@ class CharactersController < ApplicationController
   end
   
   def tags
-    @characters = Campaign.find(params[:campaign_id]).characters.tagged_with(params[:tag]).characters
+    @characters = Campaign.find(params[:campaign_id]).campaign_objects.by_type("Character").tagged_with(params[:tag]).paginate(per_page: 10, page: params[:page])
+    render :index
   end
   
   def new
@@ -26,7 +27,7 @@ class CharactersController < ApplicationController
     @character = Character.create(character_params)
     @character.campaign = Campaign.find(params[:campaign_id])
     if @character.save
-      redirect_to :action => :show, :id => @character
+      redirect_to :action => :shlow, :id => @character
     else
       render :new
     end
