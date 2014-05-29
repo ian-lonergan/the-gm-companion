@@ -1,0 +1,12 @@
+table
+  thead
+    tr
+      th Name
+      th Abstract
+  tbody
+    - campaign_objects.each do |campaign_object|
+      tr
+        td
+          = link_to campaign_object.name, campaign_object.campaign_object_holder
+        td
+          = campaign_object.abstract
