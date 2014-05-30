@@ -14,7 +14,9 @@ TheGmCompanion::Application.routes.draw do
     end
     resources :locations
     resources :notes
-    resources :encounters
+    resources :encounters do
+      get 'tags/:tag', to: 'encounters#tags', on: :collection, as: 'tag'
+    end
     resources :organizations
   end
   

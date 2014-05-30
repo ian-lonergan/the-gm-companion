@@ -9,7 +9,12 @@ class EncountersController < ApplicationController
   helper_method :sort_column
 
   def index
-    @encounters = Campaign.find(params[:campaign_id]).encounters.includes(:campaign_object).order("campaign_objects." + sort_column + " asc").paginate(per_page: 10, page: params[:page])
+    @encounters = Campaign.find(params[:campaign_id]).campaign_objects.by_type("Encounter").order(sort_column).paginate(per_page: 10, page: params[:page])
+  end
+  
+  def tags
+    @encounters = Campaign.find(params[:campaign_id]).campaign_objects.by_type("Encounter").tagged_with(params[:tag]).order(sort_column).paginate(per_page: 10, page: params[:page])
+    render :index
   end
   
   def new
