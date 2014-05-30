@@ -27,7 +27,7 @@ class CharactersController < ApplicationController
     @character = Character.create(character_params)
     @character.campaign = Campaign.find(params[:campaign_id])
     if @character.save
-      redirect_to :action => :shlow, :id => @character
+      redirect_to :action => :show, :id => @character
     else
       render :new
     end
