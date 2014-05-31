@@ -9,7 +9,12 @@ class LocationsController < ApplicationController
   helper_method :sort_column
   
   def index
-    @locations = Campaign.find(params[:campaign_id]).locations.includes(:campaign_object).order("campaign_objects." + sort_column + " asc").paginate(per_page: 10, page: params[:page])
+    @locations = Campaign.find(params[:campaign_id]).campaign_objects.by_type("Location").order(sort_column).paginate(per_page: 10, page: params[:page])
+  end
+  
+  def tags
+    @locations = Campaign.find(params[:campaign_id]).campaign_objects.by_type("Location").tagged_with(params[:tag]).order(sort_column).paginate(per_page: 10, page: params[:page])
+    render :index
   end
   
   def new

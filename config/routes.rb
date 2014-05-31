@@ -12,7 +12,9 @@ TheGmCompanion::Application.routes.draw do
     resources :characters do
       get 'tags/:tag', to: 'characters#tags', on: :collection, as: 'tag'
     end
-    resources :locations
+    resources :locations do
+      get 'tags/:tag', to: 'locations#tags', on: :collection, as: 'tag'
+    end
     resources :notes
     resources :encounters do
       get 'tags/:tag', to: 'encounters#tags', on: :collection, as: 'tag'

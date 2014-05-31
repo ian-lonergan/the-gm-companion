@@ -15,6 +15,10 @@ table[class="info-box"]
       th Parent Location:
       td
         = link_to @location.parent.name, @location.parent unless @location.parent.nil?
+    tr
+      th Tags:
+      td
+        = raw @location.campaign_object.tag_list.map { |t| link_to t, tag_campaign_locations_path(campaign_id: @location.campaign.id, tag: t) }.join(', ')
 = raw @location.object_text
 h2 Map
 = image_tag @location.map if @location.map?
