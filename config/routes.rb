@@ -19,7 +19,9 @@ TheGmCompanion::Application.routes.draw do
     resources :encounters do
       get 'tags/:tag', to: 'encounters#tags', on: :collection, as: 'tag'
     end
-    resources :organizations
+    resources :organizations do
+      get 'tags/:tag', to: 'organizations#tags', on: :collection, as: 'tag'
+    end
   end
   
   resources :campaign_objects, shallow: true do

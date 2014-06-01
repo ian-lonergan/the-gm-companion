@@ -11,6 +11,10 @@ table[class="info-box"]
       th Name:
       td
         = @organization.name
+    tr
+      th Tags:
+      td
+        = raw @organization.campaign_object.tag_list.map { |t| link_to t, tag_campaign_organizations_path(campaign_id: @organization.campaign.id, tag: t) }.join(', ')
 = raw @organization.object_text
 h2 Members
 ul
