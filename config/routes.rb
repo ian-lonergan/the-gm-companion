@@ -8,7 +8,9 @@ TheGmCompanion::Application.routes.draw do
   get "/logout" => "sessions#destroy"
   
   resources :campaigns, shallow: true do
-    resources :stories
+    resources :stories do
+      get 'tags/:tag', to: 'stories#tags', on: :collection, as: 'tag'
+    end
     resources :characters do
       get 'tags/:tag', to: 'characters#tags', on: :collection, as: 'tag'
     end
