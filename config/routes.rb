@@ -9,21 +9,21 @@ TheGmCompanion::Application.routes.draw do
   
   resources :campaigns, shallow: true do
     resources :stories do
-      get 'tags/:tag', to: 'stories#tags', on: :collection, as: 'tag'
+      get 'tags', to: 'stories#tags', on: :collection, as: 'tag'
     end
     resources :characters do
-      get 'tags/:tag', to: 'characters#tags', on: :collection, as: 'tag'
+      get 'tags', to: 'characters#tags', on: :collection, as: 'tag'
     end
     resources :locations do
-      get 'tags/:tag', to: 'locations#tags', on: :collection, as: 'tag'
+      get 'tags', to: 'locations#tags', on: :collection, as: 'tag'
     end
-    resources :notes
     resources :encounters do
-      get 'tags/:tag', to: 'encounters#tags', on: :collection, as: 'tag'
+      get 'tags', to: 'encounters#tags', on: :collection, as: 'tag'
     end
     resources :organizations do
-      get 'tags/:tag', to: 'organizations#tags', on: :collection, as: 'tag'
+      get 'tags', to: 'organizations#tags', on: :collection, as: 'tag'
     end
+    resources :notes
   end
   
   resources :campaign_objects, shallow: true do

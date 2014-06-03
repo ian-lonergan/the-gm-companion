@@ -1,4 +1,6 @@
 | Sort by: #{sortable 'created_at', 'Last Created'} #{sortable 'updated_at', 'Last Updated'} #{sortable 'name'}
+br
+= render partial: 'campaign_objects/tag_search_form', locals: {path: tag_campaign_characters_path(current_campaign.id)}
 = render partial: 'campaign_objects/table', locals: {campaign_objects: @characters}
 = will_paginate
 = link_to 'New Character', [:new, current_campaign, :character]
