@@ -1,4 +1,5 @@
 | Sort by: #{sortable 'created_at', 'Last Created'} #{sortable 'updated_at', 'Last Updated'} #{sortable 'name'}
+= render partial: 'campaign_objects/tag_search_form', locals: {path: tag_campaign_locations_path(current_campaign.id)}
 = render partial: 'campaign_objects/table', locals: {campaign_objects: @locations}
 = will_paginate
 = link_to 'New Location', [:new, current_campaign, :location]
