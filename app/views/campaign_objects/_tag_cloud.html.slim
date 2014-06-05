@@ -1,0 +1,4 @@
+h2 Tag Cloud
+- tag_cloud(tags, %w(tag_xs, tag_s, tag_m, tag_l, tag_xl)) do |tag, cssc|
+  |  
+  = link_to tag.name, tag_campaign_campaign_objects_path(campaign_id: campaign.id, tag: tag.name), class: cssc

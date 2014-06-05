@@ -1,4 +1,5 @@
-ul
-  - @campaign_objects.each_with_index do |campaign_object, index|
-    li
-      = render campaign_object
+| Sort by: #{sortable 'created_at', 'Last Created'} #{sortable 'updated_at', 'Last Updated'} #{sortable 'name'}
+br
+= render partial: 'campaign_objects/tag_search_form', locals: {path: tag_campaign_campaign_objects_path(current_campaign.id)}
+= render partial: 'campaign_objects/table', locals: {campaign_objects: @campaign_objects}
+= will_paginate
