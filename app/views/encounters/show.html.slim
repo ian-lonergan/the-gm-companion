@@ -22,7 +22,7 @@ table[class="info-box"]
     tr
       th Tags:
       td
-        = raw @encounter.campaign_object.tag_list.map { |t| link_to t, tag_campaign_encounters_path(campaign_id: @encounter.campaign.id, tag: t) }.join(', ')
+        = raw @encounter.campaign_object.tag_list.map { |t| link_to t, tag_campaign_campaign_objects_path(campaign_id: @encounter.campaign.id, tag: t) }.join(', ')
 = raw @encounter.object_text
 h2 Opponents
 ul

@@ -22,7 +22,7 @@ table[class="info-box"]
     tr
       th Tags:
       td
-        = raw @story.campaign_object.tag_list.map { |t| link_to t, tag_campaign_stories_path(campaign_id: @story.campaign.id, tag: t) }.join(', ')
+        = raw @story.campaign_object.tag_list.map { |t| link_to t, tag_campaign_campaign_objects_path(campaign_id: @story.campaign.id, tag: t) }.join(', ')
 = raw @story.object_text
 h2 Child Stories
 ul[style="list-style: none;"]
