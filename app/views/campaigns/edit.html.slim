@@ -1,6 +1,8 @@
 = form_for @campaign do |f|
   = f.label :name
   = f.text_field :name
+  = f.label :tag_list, "Tags (comma separated)"
+  = f.text_field :tag_list
   = f.label :campaign_text
   = f.text_area :campaign_text, class: 'tinymce'
   = tinymce
