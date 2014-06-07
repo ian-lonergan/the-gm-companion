@@ -4,6 +4,8 @@
   nav
     ul[class="no-styling"]
       li
+        = link_to 'All', [current_campaign, :campaign_objects]
+      li
         = link_to 'Stories', [current_campaign, :stories]
       li
         = link_to 'Characters', [current_campaign, :characters]
