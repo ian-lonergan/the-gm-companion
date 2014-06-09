@@ -9,6 +9,11 @@ class CampaignsController < ApplicationController
     @campaigns = Campaign.order("created_at asc").paginate(per_page: 10, page: params[:page])
   end
   
+  def tags
+    @campaigns = Campaign.tagged_with(params[:tag]).order("created_at asc").paginate(per_page: 10, page: params[:page])
+    render :index
+  end
+  
   def new
     choose_campaign(nil)
     @campaign = Campaign.new
@@ -61,7 +66,7 @@ class CampaignsController < ApplicationController
   end
   
   def campaign_params
-    params.require(:campaign).permit(:name, :campaign_text)
+    params.require(:campaign).permit(:name, :campaign_text, :tag_list)
   end
   
   private

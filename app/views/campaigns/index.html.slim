@@ -1,4 +1,7 @@
-= will_paginate
+= form_tag tag_campaigns_path, method: :get do
+  p
+    = text_field_tag :tag, params[:tag]
+    = submit_tag "Search for Tag"
 ul
   - @campaigns.each do |campaign|
     li
