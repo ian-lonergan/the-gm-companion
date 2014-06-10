@@ -7,4 +7,9 @@ ul
     li
       = render campaign
 = will_paginate
+h2 Tag Cloud
+- tag_cloud(Campaign.tag_counts_on(:tags), %w(tag_xs, tag_s, tag_m, tag_l, tag_xl)) do |tag, cssc|
+  |  
+  = link_to tag.name, tag_campaigns_path(tag: tag.name), class: cssc
+br
 = link_to 'New Campaign', [:new, :campaign]
