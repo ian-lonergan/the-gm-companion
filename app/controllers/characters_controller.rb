@@ -9,11 +9,11 @@ class CharactersController < ApplicationController
   helper_method :sort_column
 
   def index
-    @characters = Campaign.find(params[:campaign_id]).campaign_objects.by_type("Character").order(sort_column).paginate(per_page: 10, page: params[:page])
+    @characters = Campaign.find(params[:campaign_id]).campaign_objects.by_type("Character").order(sort_column).paginate(per_page: 25, page: params[:page])
   end
   
   def tags
-    @characters = Campaign.find(params[:campaign_id]).campaign_objects.by_type("Character").tagged_with(params[:tag]).order(sort_column).paginate(per_page: 10, page: params[:page])
+    @characters = Campaign.find(params[:campaign_id]).campaign_objects.by_type("Character").tagged_with(params[:tag]).order(sort_column).paginate(per_page: 25, page: params[:page])
     render :index
   end
   

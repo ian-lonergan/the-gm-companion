@@ -3,7 +3,7 @@ class InvitationsController < ApplicationController
   before_action :admin_user
   
   def index
-    @invitations = Invitation.paginate(per_page: 10, page: params[:page])
+    @invitations = Invitation.paginate(per_page: 25, page: params[:page])
   end
   
   def create

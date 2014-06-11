@@ -4,11 +4,11 @@ class CampaignObjectsController < ApplicationController
   helper_method :sort_column
   
   def index
-    @campaign_objects = Campaign.find(params[:campaign_id]).campaign_objects.order(sort_column).paginate(per_page: 10, page: params[:page])
+    @campaign_objects = Campaign.find(params[:campaign_id]).campaign_objects.order(sort_column).paginate(per_page: 25, page: params[:page])
   end
   
   def tags
-    @campaign_objects = Campaign.find(params[:campaign_id]).campaign_objects.tagged_with(params[:tag]).order(sort_column).paginate(per_page: 10, page: params[:page])
+    @campaign_objects = Campaign.find(params[:campaign_id]).campaign_objects.tagged_with(params[:tag]).order(sort_column).paginate(per_page: 25, page: params[:page])
     render :index
   end
   

@@ -6,7 +6,7 @@ class CampaignsController < ApplicationController
   
   def index
     choose_campaign(nil)
-    @campaigns = Campaign.order("created_at asc").paginate(per_page: 10, page: params[:page])
+    @campaigns = Campaign.order("created_at asc").paginate(per_page: 25, page: params[:page])
   end
   
   def new

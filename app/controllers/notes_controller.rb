@@ -11,7 +11,7 @@ class NotesController < ApplicationController
   
   def index
     if params[:campaign_id]
-      @notes = Campaign.find(params[:campaign_id]).notes.paginate(per_page: 10, page: params[:page])
+      @notes = Campaign.find(params[:campaign_id]).notes.paginate(per_page: 25, page: params[:page])
     else
       @notes = Note.all
     end
