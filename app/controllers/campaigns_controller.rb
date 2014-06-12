@@ -10,7 +10,7 @@ class CampaignsController < ApplicationController
   end
   
   def tags
-    @campaigns = Campaign.tagged_with(params[:tag]).order("created_at asc").paginate(per_page: 10, page: params[:page])
+    @campaigns = Campaign.tagged_with(params[:tag]).order("created_at asc").paginate(per_page: 25, page: params[:page])
     render :index
   end
   
